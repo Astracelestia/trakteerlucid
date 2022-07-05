@@ -1,0 +1,67 @@
+.text-primary {
+  color: rgba(255, 255, 255, 1);
+}
+
+/* AWN - Awesome Notification */
+/* Tip Wrapper */
+.awn-toast-tip .awn-toast-wrapper {
+  font-family: var(--fontFamily), 'sans-serif';
+  font-size: 1em;
+}
+
+#awn-toast-container {
+  pointer-events: none !important;
+  z-index: 9 !important;
+}
+
+.awn-toast {
+  box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.07);
+}
+
+.awn-toast-tip .awn-toast-label {
+  color: rgba(255, 255, 255, 1) !important;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.awn-toast-tip .awn-toast-progress-bar:after {
+  background: rgba(255, 255, 255, 1) !important;
+}
+
+.awn-toast-tip .awn-toast-wrapper {
+  border: 0px solid rgba(255, 255, 255, 1) !important;
+  color: rgba(255, 255, 255, 1);
+  background-image: url(" https://imgur.com/DZz7ZYz.png");
+  padding-right: 16px;
+}
+
+.awn-toast-content {
+  margin-right: 55px;
+  line-height: 1.5em;
+  max-width: 800px;
+  height: 1280px;
+
+}
+
+#awn-toast-container.awn-top-left .awn-toast:first-child, #awn-toast-container.awn-top-right .awn-toast:first-child {
+  margin-top: 0px !important;
+}
+
+/*.awn-toast-icon { display: none; }*/
+#awn-toast-container {
+  transform-origin: top center;
+  transform: scale(2);
+  position: absolute;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: unset !important;
+  display: flex;
+  justify-content: center;
+}
+
+.awn-toast {
+  width: 500px;
+  height: 1500px;
+
+}
