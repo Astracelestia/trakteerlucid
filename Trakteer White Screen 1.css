@@ -1,0 +1,127 @@
+.stream-content {
+    position: absolute;
+    margin-left: -60px;
+    left: -600px;
+    width: 436px;
+    height: 690px;
+    background: transparent;
+    background-image: url("https://imgur.com/xUcmgeA.png");
+    -webkit-animation: slide 2s forwards;
+    -webkit-animation-delay: 2s;
+    animation: slide 1s forwards;
+    animation-delay: 0s;
+  font-color: rgba(255, 255, 255, 1) !important;
+  text-shadow:
+    /* White glow */
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff;
+
+  border:transparent;
+}
+
+.quantity-label {
+    position: absolute;
+    left: 45px;
+    background: rgba(255, 255, 255, 1);
+    color: rgb(0 0 0);
+    padding: 7px 10px 7px 15px;
+    /* border-radius: 5px; */
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    font-weight: 700;
+    white-space: nowrap;
+    animation: float 5s infinite;
+}
+img.unit-icon {
+    width: auto;
+    height: 35px;
+    background: rgba(255, 255, 255, 1);
+    border-left: 3px solid rgba(255, 255, 255, 1);
+    border-bottom: 3px solid rgba(255, 255, 255, 1);
+    border-radius: 6px;
+    padding: 7px;
+    z-index: 1;
+    animation: float 5s infinite;
+}
+
+.support-message {
+font-size: 2em;
+    font-weight: 100;
+    color: white;
+    padding: 80px 20px 20px 80px;
+    line-height: 1em;
+    display: flex ;
+    align-items: flex-end;
+      text-shadow:
+    /* White glow */
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff;
+    animation: typing 5s steps(500, end),
+                      blink-caret 3s step-end infinite,
+                      fadeUp 1s ease-in-out;
+
+}
+
+
+.bubbles>div {
+  height:0px;
+  width:0px;
+  animation: scaleall 1s ease-in-out;
+}
+
+.supporter-avatar {
+  position: absolute;
+  animation: scaleall 0.5s ease-in-out;
+}
+
+.supporter-avatar>img {
+  border-radius: 40px;
+  margin: 10px;
+  border-left: 2px solid rgba(255, 255, 255, 0);
+  border-bottom: 2px solid rgba(255, 255, 255, 0);
+  height: 80px;
+  width: 80px;
+}
+
+.letters-1 {
+  margin-top: -20px;
+  margin-left: 40px;
+  font-size: 1.7em !important;
+}
+.letters-2 {
+  margin-left: 40px;
+  font-size: 1.5em !important;
+  font-color: rgba(255, 255, 255, 1) !important;
+
+}
+
+
+
+@keyframes typing {
+  from { width: 0% }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange }
+}
+@keyframes scaleup {
+  0% {
+    -webkit-transform: scalex(0);
+    transform: scalex(0);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: scalex(1);
+    transform: scalex(1);
+    opacity: 0.5;
+  }
+}
+
+@-webkit-keyframes slide {
+    100% { left: 0px; }
+}

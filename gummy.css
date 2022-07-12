@@ -1,0 +1,163 @@
+.stream-content {
+    background-color: transparent;
+    background-image: url('https://imgur.com/pj6yklD.gif');
+    background-size: 1000px 1000px;
+    border:transparent;
+    text-align: center;
+    width: 1000px;
+    height: 1000px;
+    font-family: Fredoka+One;
+    animation: scaleup 0.25s linear;
+    animation-iteration-count: 1;
+}
+
+.supporter-avatar {
+  position: relative ;
+  animation: scaleall 0.5s ease-in-out;
+}
+
+.supporter-avatar>img {
+  border-radius: 40px;
+  left: 1000px !important ;
+  margin-top: 200px;
+  border-left: 2px solid rgba(255, 255, 255, 0);
+  border-bottom: 2px solid rgba(255, 255, 255, 0);
+  height: 150px;
+  width: 150px;
+  animation: float1 4s infinite;
+}
+
+
+.letters-1 {
+ color: rgb(0, 29, 110) !important;
+  margin-top: -20px;
+  margin-left: 25px;
+  font-size: 5em !important;
+   line-width: 0.3em !important ;
+-webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgb(255, 255, 255);
+animation: float1 2s infinite;
+}
+.message {
+    font-size: 1em;
+    padding: 65px;
+    color: rgba(0, 0, 0, 1);
+    padding: 15px 30px 0 60px;
+}
+
+.support-message {
+    font-size: 3em;
+    font-weight: 100;
+    color: white;
+   padding: 50px 20px 10px 20px;
+    line-height: 1em;
+  position: relative;
+  display: inline-block;
+  color: #fff;
+
+  position: relative;
+
+}
+
+.letters-2 {
+  margin-left: 330px !important ;
+  margin-top: -5px;
+  font-size: 3em !important;
+  color: rgb(255, 255, 255);
+  animation: fadeUp 3s ease-in-out;
+
+
+}
+.bubbles {
+visibility: hidden;
+      position: absolute;
+      animation: scaleall 1s ease-in-out;
+    }
+
+    .bubbles>div {
+visibility: hidden;
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      background: rgba(255, 255, 255, 1);
+      border-radius: 9999px;
+      border-left: 3px solid rgba(255, 255, 255, 1);
+      border-bottom: 3px solid rgba(255, 255, 255, 1);
+      animation: float 4s infinite;
+    }
+
+    .bubbles-top {
+      left: 30px;
+visibility: hidden;
+      bottom: 8px;
+    }
+
+    .bubbles.bubbles-top>.bubble-2 {
+      width: 10px;
+      height: 10px;
+      margin-left: 30px;
+      margin-top: 16px;
+      border-width: 2px;
+visibility: hidden;
+    }
+
+    .bubbles.bubbles-top>.bubble-3 {
+     visibility: hidden;
+      width: 5px;
+      height: 5px;
+      margin-left: 20px;
+      margin-top: 31px;
+      border-width: 1px;
+    }
+
+    .bubbles>div.bubble-2 {
+      animation-delay: .25s;
+visibility: hidden;
+    }
+
+    .bubbles>div.bubble-3 {
+      animation-delay: .5s;
+visibility: hidden;
+    }
+
+.quantity-label {
+visibility: hidden;
+    position: absolute;
+    left: 45px;
+    background: rgba(255, 255, 255, 1);
+    color: rgb(0 0 0);
+    padding: 7px 10px 7px 15px;
+    /* border-radius: 5px; */
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    font-weight: 700;
+    white-space: nowrap;
+    animation: float 5s infinite;
+}
+img.unit-icon {
+visibility: hidden;
+    width: auto;
+    height: 35px;
+    background: rgba(255, 255, 255, 1);
+    border-left: 3px solid rgba(255, 255, 255, 1);
+    border-bottom: 3px solid rgba(255, 255, 255, 1);
+    border-radius: 6px;
+    padding: 7px;
+    z-index: 1;
+    animation: float 5s infinite;
+}
+
+
+@keyframes float1 {
+      0% {
+        transform: translatey(0px);
+      }
+
+      50% {
+        transform: translatey(-20px);
+      }
+
+      100% {
+        transform: translatey(0px);
+      }
+    }
