@@ -1,0 +1,2134 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56217484-4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-56217484-4');
+  </script>
+  <meta charset=utf-8>
+  <meta http-equiv=x-ua-compatible content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png?id=09428b350ff942d7caa9">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png?id=f551df9578344ca90df6">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png?id=598dc9cb09d1b7749cd4">
+  <link rel="manifest" href="/favicon/site.webmanifest?id=b9aa277fcfc34c31db6c">
+  <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg?id=4af9ca69f8b92cb813ef" color="#5bbad5">
+  <meta name="application-name" content="Trakteer Admin">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="csrf-token" content="KzPnltLuix6agBMI5dEnbiAV1pzAppjzEZQzF4LJ">
+  <title>Manage Trakteer - Stream Overlay</title>
+  <link href="/css/trakteer-admin.css?id=911984b4e142034506d5" rel="stylesheet">
+  <style type="text/css">
+    .bd-full {
+      border-radius: 9999px;
+    }
+  </style>
+  <style type="text/css">
+    .cr-slider-wrap {
+      display: none !important;
+    }
+  </style>
+  <style>
+    @media screen and (min-width: 768px) {
+      .navbar>.menu>*:hover a {
+        color: #be1e2d !important;
+      }
+
+      .navbar>.menu>*:hover a>.icon {
+        background: #be1e2d !important;
+      }
+
+      #my-page-container .tab-content,
+      #my-page-container .compacted-wrapper {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdn.trakteer.id/css/pretty-checkbox.min.css">
+  <style>
+    .widget-block.is-loading:after {
+      content: 'Loading...';
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(255, 255, 255, .8);
+      z-index: 1;
+      top: 0;
+      left: 0;
+      font-size: 1.25em;
+      pointer-events: unset;
+    }
+
+    .widget-url .input:not(:hover) {
+      color: transparent;
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .fgroup-palette {
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      width: 50px;
+    }
+
+    .fgroup-palette .pcr-button {
+      width: 100% !important;
+    }
+
+    .widgets>a.is-active,
+    .widgets>a:hover {
+      color: #be1e2d !important;
+      background: #ffecee;
+    }
+
+    @media screen and (min-width: 768px) {
+      .preview-container {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 20px;
+        align-self: flex-start;
+      }
+    }
+  </style>
+  <link rel="stylesheet" type="text/css" href="https://trakteer.id/css/pickr.min.css">
+  <link rel="stylesheet" href="https://cdn.trakteer.id/css/pretty-checkbox.min.css">
+  <style>
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 28px;
+    }
+
+    .switch.text {
+      width: 90px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 20px;
+      width: 20px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    input:checked+.slider {
+      background-color: #06bb00;
+    }
+
+    .text .slider:before {
+      height: 20px;
+      width: 20px;
+      left: 4px;
+      bottom: 4px;
+    }
+
+    .text input:checked+.slider:before {
+      left: 34px;
+    }
+
+    input:checked+.slider:before {
+      -webkit-transform: translateX(31px);
+      -ms-transform: translateX(31px);
+      transform: translateX(31px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+      border-radius: 34px;
+    }
+
+    .slider.round:before {
+      border-radius: 50%;
+    }
+
+    .on {
+      display: none;
+    }
+
+    .on,
+    .off {
+      color: white;
+      position: absolute;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      left: 50%;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .on.icon,
+    .off.icon {
+      background: white;
+    }
+
+    .off {
+      left: 65%;
+    }
+
+    .on {
+      left: 35%;
+    }
+
+    input:checked+.slider .on {
+      display: block;
+    }
+
+    input:checked+.slider .off {
+      display: none;
+    }
+  </style>
+  <style>
+    .switch.small {
+      position: relative;
+      display: inline-block;
+      width: 40px;
+      height: 18px;
+    }
+
+    .slider.small:before {
+      position: absolute;
+      content: "";
+      height: 10px;
+      width: 10px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    input:checked+.slider.small {
+      background-color: #06bb00;
+    }
+
+    .text .slider.small:before {
+      height: 10px;
+      width: 10px;
+      left: 4px;
+      bottom: 4px;
+    }
+
+    .text input:checked+.slider.small:before {
+      left: 34px;
+    }
+
+    input:checked+.slider.small:before {
+      -webkit-transform: translateX(21px);
+      -ms-transform: translateX(21px);
+      transform: translateX(21px);
+    }
+  </style>
+  <link rel="stylesheet" href="https://assets.trakteer.id/css/select2.min.css">
+  <style>
+    .select2-container--default .select2-selection--single .select2-selection__arrow {
+      height: 38px;
+    }
+
+    .select2-container--default .select2-selection--single {
+      height: auto;
+      padding: 5px;
+      border-color: #cdc7c2;
+    }
+
+    .select2-results__group {
+      font-size: .9em;
+      background: #f3f3f3;
+      padding: 10px !important;
+    }
+  </style>
+  <style>
+    @media screen and (max-width: 599px) {}
+
+    @media screen and (max-width: 767px) {}
+
+    @media screen and (max-width: 1023px) {}
+
+    /* From [X] Breakpoint to Infinite */
+    @media screen and (min-width: 600px) {}
+
+    @media screen and (min-width: 768px) {}
+
+    @media screen and (min-width: 1024px) {}
+  </style>
+  <style>
+    .tab-menu>*,
+    .tab-menu-mobile>* {
+      flex-grow: 1;
+      text-align: center;
+      padding: 10px;
+      cursor: pointer;
+      font-size: .9rem;
+    }
+
+    .tab-menu>*.is-active {
+      font-weight: 700;
+      color: #fff !important;
+    }
+
+    .tab-menu>*.is-active>.icon {
+      background: #fff !important;
+    }
+
+    .tab-menu>*:not(.is-active) {
+      background: #fff;
+    }
+
+    .tab-menu>*:not(.is-active):hover,
+    .tab-menu>*:not(.is-active):focus {
+      color: #be1e2d !important;
+    }
+
+    .tab-menu>*.before-active {
+      border-bottom-right-radius: 4px;
+    }
+
+    .tab-menu>*.after-active {
+      border-bottom-left-radius: 4px;
+    }
+
+    .tab-menu-mobile>* {
+      padding: 5px;
+      justify-content: center;
+    }
+
+    .tab-menu-mobile>*.is-active {
+      font-weight: 700;
+      background: #fff !important;
+      color: #be1e2d !important;
+      border-radius: 9999px;
+    }
+
+    .tab-menu-mobile>*:not(.is-active) {
+      color: #fff !important;
+    }
+  </style>
+  <link rel="stylesheet" type="text/css" href="https://cdn.trakteer.id/css/awnotify.min.css">
+  <script>
+    window.onerror = function(msg, url, line) {
+      let formData = new FormData();
+      formData.append("_token", "KzPnltLuix6agBMI5dEnbiAV1pzAppjzEZQzF4LJ");
+      formData.append("message", JSON.stringify([msg, url, line]));
+      let xhr = new XMLHttpRequest();
+      xhr.open("POST", "https://trakteer.id/frontend-log/error");
+      xhr.send(formData);
+    };
+  </script>
+</head>
+
+<body class="admin-panel">
+  <style>
+    .tab-menu>*,
+    .tab-menu-mobile>* {
+      flex-grow: 1;
+      text-align: center;
+      padding: 10px;
+      cursor: pointer;
+      font-size: .9rem;
+    }
+
+    .tab-menu>*.is-active {
+      font-weight: 700;
+      color: #fff !important;
+    }
+
+    .tab-menu>*.is-active>.icon {
+      background: #fff !important;
+    }
+
+    .tab-menu>*:not(.is-active) {
+      background: #fff;
+    }
+
+    .tab-menu>*:not(.is-active):hover,
+    .tab-menu>*:not(.is-active):focus {
+      color: #be1e2d !important;
+    }
+
+    .tab-menu>*.before-active {
+      border-bottom-right-radius: 4px;
+    }
+
+    .tab-menu>*.after-active {
+      border-bottom-left-radius: 4px;
+    }
+
+    .tab-menu-mobile>* {
+      padding: 5px;
+      justify-content: center;
+    }
+
+    .tab-menu-mobile>*.is-active {
+      font-weight: 700;
+      background: #fff !important;
+      color: #be1e2d !important;
+      border-radius: 9999px;
+    }
+
+    .tab-menu-mobile>*:not(.is-active) {
+      color: #fff !important;
+    }
+  </style>
+  <div id="header" class="fixed">
+    <div class="navbar mb-1" style="max-width: unset">
+      <div class="d-flex fx-ai-center full-height"><a href="https://trakteer.id" class="logo">
+          <div class="trakteer-logo"><svg width="129" height="24" viewBox="0 0 129 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22.783 1.52298H3.07092V21.2351H22.783V1.52298Z" fill="white" />
+              <path
+                d="M19.4498 0H4.55018C3.3434 0 2.18604 0.479394 1.33272 1.33272C0.479394 2.18604 0 3.3434 0 4.55018V19.4498C0 20.6566 0.479394 21.8139 1.33272 22.6673C2.18604 23.5206 3.3434 24 4.55018 24H19.4498C20.6566 24 21.814 23.5206 22.6673 22.6673C23.5206 21.8139 24 20.6566 24 19.4498V4.55018C24 3.3434 23.5206 2.18604 22.6673 1.33272C21.814 0.479394 20.6566 0 19.4498 0ZM14.7801 6.90379C14.7801 7.19625 14.6972 7.48273 14.541 7.72996H11.909C11.7805 7.52589 11.7012 7.29474 11.6775 7.05477C11.6537 6.8148 11.686 6.57258 11.772 6.34726C11.8579 6.12195 11.9951 5.9197 12.1726 5.75651C12.3501 5.59332 12.5632 5.47365 12.7949 5.40697C13.0267 5.34028 13.2708 5.3284 13.5079 5.37227C13.745 5.41614 13.9687 5.51456 14.1612 5.65974C14.3538 5.80492 14.5099 5.9929 14.6173 6.20881C14.7247 6.42472 14.7804 6.66264 14.7801 6.90379ZM11.1221 3.63747C11.5282 3.63767 11.9222 3.77534 12.2401 4.02807C12.5579 4.2808 12.7809 4.6337 12.8726 5.02929C12.4322 5.06873 12.0226 5.27154 11.7242 5.5978C11.4259 5.92406 11.2604 6.35016 11.2604 6.79227C11.2605 6.93791 11.2788 7.08297 11.3148 7.22409C11.0712 7.25186 10.8244 7.22952 10.5897 7.15843C10.355 7.08735 10.1374 6.96903 9.95006 6.81074C9.76278 6.65245 9.60983 6.45753 9.50063 6.23797C9.39143 6.0184 9.32828 5.77883 9.31506 5.53397C9.30184 5.28911 9.33883 5.04413 9.42375 4.81409C9.50868 4.58405 9.63974 4.37379 9.8089 4.19626C9.97805 4.01872 10.1817 3.87765 10.4074 3.78171C10.6331 3.68577 10.876 3.63699 11.1212 3.63837L11.1221 3.63747ZM9.03524 8.12253H15.0674C15.2421 8.12253 15.4097 8.19195 15.5333 8.31551C15.6568 8.43908 15.7262 8.60667 15.7262 8.78141C15.7262 8.95616 15.6568 9.12375 15.5333 9.24732C15.4097 9.37088 15.2421 9.4403 15.0674 9.4403H9.03524C8.86049 9.4403 8.6929 9.37088 8.56934 9.24732C8.44577 9.12375 8.37636 8.95616 8.37636 8.78141C8.37636 8.60667 8.44577 8.43908 8.56934 8.31551C8.6929 8.19195 8.86049 8.12253 9.03524 8.12253ZM16.651 17.9616C16.651 18.406 16.4745 18.8322 16.1602 19.1464C15.846 19.4606 15.4198 19.6372 14.9755 19.6372H9.17621C8.73183 19.6372 8.30565 19.4606 7.99142 19.1464C7.6772 18.8322 7.50067 18.406 7.50067 17.9616V12.4202C7.50144 12.0577 7.61978 11.7052 7.83792 11.4156C8.05606 11.126 8.36223 10.915 8.71048 10.8143V10.2299H15.2975V10.7795C15.6782 10.854 16.0212 11.0583 16.268 11.3576C16.5148 11.6568 16.6502 12.0323 16.651 12.4202V17.9616Z"
+                fill="#BE1E2D" />
+              <path d="M12.0598 13.5694C10.4725 11.9822 8.41336 14.0422 10.0006 15.6286L12.0598 17.6842L14.1118 15.6321C15.6838 14.0601 13.6247 12.0009 12.0598 13.5694Z" fill="#BE1E2D" />
+              <path
+                d="M37.9926 6.81777V18.721C38.0125 19.2967 37.8233 19.8601 37.4599 20.3071C37.1048 20.7304 36.612 20.9421 35.9814 20.9421C35.7034 20.9536 35.4265 20.9018 35.1715 20.7907C34.9165 20.6796 34.6901 20.512 34.5094 20.3006C34.1422 19.8595 33.9482 19.2999 33.9636 18.7262V6.81777H31.589C31.0745 6.83401 30.5712 6.66502 30.1708 6.34154C29.9813 6.18407 29.8308 5.98487 29.7311 5.75954C29.6314 5.53422 29.5852 5.28888 29.5961 5.04273C29.5847 4.79332 29.6303 4.54459 29.7294 4.31544C29.8285 4.0863 29.9786 3.88275 30.1682 3.72029C30.5666 3.39048 31.072 3.21782 31.589 3.23487H40.2989C40.8151 3.21623 41.3202 3.38649 41.7198 3.71373C42.0967 4.03297 42.2852 4.47553 42.2852 5.04141C42.2949 5.28664 42.2482 5.53082 42.1485 5.75511C42.0489 5.97939 41.8991 6.17779 41.7106 6.33498C41.3138 6.66105 40.8123 6.83212 40.2989 6.81646L37.9926 6.81777Z"
+                fill="#BE1E2D" />
+              <path
+                d="M46.4663 8.62565C47.3856 7.66356 48.2475 7.18252 49.0521 7.18252C49.576 7.1705 50.0849 7.3581 50.4756 7.7073C50.6664 7.87109 50.8187 8.07506 50.9214 8.30459C51.0241 8.53413 51.0749 8.78354 51.0699 9.03497C51.0699 9.59299 50.9094 9.99313 50.5884 10.2354C50.2674 10.4777 49.7724 10.7059 49.1033 10.9202C48.1666 11.2351 47.4874 11.5587 47.0659 11.8911C46.6662 12.2059 46.4659 12.7307 46.465 13.4654V18.721C46.4843 19.2771 46.3016 19.8214 45.9507 20.2534C45.6079 20.6618 45.1343 20.866 44.5299 20.866C44.2656 20.8765 44.0024 20.8257 43.7609 20.7176C43.5194 20.6095 43.3062 20.447 43.1379 20.2429C42.7883 19.8137 42.6049 19.273 42.621 18.7197V9.46267C42.621 8.76909 42.7763 8.25393 43.0868 7.9172C43.2544 7.71179 43.4658 7.54634 43.7054 7.43286C43.9451 7.31939 44.207 7.26076 44.4722 7.26123C45.3722 7.26386 46.0369 7.71867 46.4663 8.62565Z"
+                fill="#BE1E2D" />
+              <path
+                d="M60.668 19.3468C60.2792 19.8455 59.7937 20.2605 59.2406 20.5669C58.6823 20.8335 58.0682 20.9626 57.4498 20.9434C56.0574 20.9434 54.8015 20.4558 53.682 19.4806C52.1662 18.1311 51.4084 16.3175 51.4084 14.04C51.4084 11.9409 52.0788 10.2319 53.4196 8.91297C54.5898 7.74272 55.9074 7.1576 57.3724 7.1576C57.9895 7.13839 58.6029 7.25857 59.1671 7.50919C59.7413 7.80627 60.2597 8.20042 60.6995 8.67419C61.0913 7.73485 61.7105 7.26518 62.5572 7.26518C62.8153 7.26254 63.0713 7.31144 63.3103 7.40901C63.5493 7.50658 63.7664 7.65086 63.949 7.83339C64.1315 8.01592 64.2758 8.23304 64.3733 8.47203C64.4709 8.71102 64.5198 8.96708 64.5172 9.22521V18.5859C64.5329 19.1701 64.3419 19.741 63.978 20.1982C63.8065 20.4147 63.5866 20.5879 63.3359 20.7039C63.0853 20.8199 62.8109 20.8754 62.5349 20.866C61.648 20.866 61.0257 20.3596 60.668 19.3468ZM55.2537 13.9797C55.2346 14.8135 55.4549 15.6353 55.8886 16.3477C56.3119 17.0229 56.9452 17.3605 57.7883 17.3605C58.319 17.3712 58.8393 17.2122 59.2734 16.9066C59.6964 16.6049 60.0297 16.1941 60.2377 15.718C60.4568 15.2295 60.569 14.7 60.567 14.1646C60.567 13.1719 60.3391 12.3529 59.8835 11.7074C59.4278 11.0619 58.7281 10.7392 57.7844 10.7392C57.4137 10.7293 57.0469 10.8164 56.7204 10.992C56.3938 11.1676 56.1189 11.4255 55.9227 11.7402C55.4772 12.4013 55.2438 13.1825 55.2537 13.9797Z"
+                fill="#BE1E2D" />
+              <path
+                d="M71.3958 14.3785V18.721C71.4128 19.2748 71.2303 19.8163 70.8815 20.2468C70.5386 20.6596 70.065 20.866 69.4606 20.866C69.1963 20.8765 68.9331 20.8257 68.6916 20.7176C68.4502 20.6095 68.237 20.447 68.0687 20.2428C67.7191 19.8137 67.5356 19.273 67.5518 18.7197V3.62586C67.5488 3.26056 67.6249 2.89894 67.7748 2.56582C67.9131 2.24959 68.1412 1.98091 68.4308 1.79309C68.7376 1.60154 69.0938 1.50395 69.4554 1.51233C69.7216 1.5002 69.9871 1.54843 70.232 1.65339C70.4769 1.75835 70.6949 1.91733 70.8697 2.11844C71.2246 2.53897 71.4115 3.07586 71.3945 3.62586V11.7861L75.2135 7.86473C75.6097 7.44753 76.1931 7.23893 76.9636 7.23893C77.316 7.25094 77.6502 7.39852 77.8964 7.65088C78.1754 7.89511 78.3793 8.2136 78.4842 8.56924C78.5119 8.71474 78.529 8.86206 78.5353 9.01005C78.5354 9.29605 78.4718 9.57849 78.3493 9.83692C78.2268 10.0954 78.0483 10.3233 77.8269 10.5043L75.1072 13.0902L78.4855 17.2792C79.0103 17.9727 79.2727 18.494 79.2727 18.843C79.2835 19.3546 79.1192 19.8545 78.8069 20.2599C78.6679 20.4503 78.485 20.6043 78.2737 20.7089C78.0625 20.8135 77.8291 20.8656 77.5934 20.8608C76.7931 20.8608 76.1756 20.5629 75.7409 19.9673L71.3958 14.3785Z"
+                fill="#BE1E2D" />
+              <path
+                d="M86.7204 10.9202V18.717C86.7411 19.2739 86.5599 19.8195 86.2101 20.2533C86.0392 20.4553 85.8243 20.6153 85.5818 20.7211C85.3393 20.8268 85.0758 20.8755 84.8116 20.8634C84.5443 20.8744 84.278 20.8239 84.0333 20.7159C83.7886 20.6079 83.5719 20.4451 83.3999 20.2402C83.046 19.813 82.8595 19.2716 82.8752 18.717V10.9202C81.9131 10.9202 81.2681 10.7287 80.9401 10.3456C80.6424 10.0256 80.4818 9.60175 80.4927 9.16484C80.4982 8.85938 80.5817 8.5604 80.7354 8.29634C80.8727 8.02693 81.0918 7.80787 81.3612 7.67055C81.6717 7.51311 82.1763 7.4344 82.8752 7.4344V5.04275C82.8568 4.48711 83.0404 3.94364 83.3921 3.51303C83.7367 3.10195 84.2094 2.89642 84.8103 2.89642C85.0741 2.88499 85.337 2.93429 85.5788 3.04051C85.8206 3.14673 86.0348 3.30704 86.2048 3.50909C86.5557 3.941 86.7384 4.4853 86.7191 5.04143V7.44227H87.8172C88.3169 7.42557 88.8061 7.58847 89.196 7.90145C89.3803 8.05619 89.5263 8.25146 89.6226 8.472C89.7188 8.69254 89.7628 8.93237 89.751 9.17271C89.7611 9.41399 89.7161 9.65442 89.6192 9.87564C89.5224 10.0969 89.3763 10.293 89.1921 10.4492C88.8062 10.7691 88.3168 10.937 87.8159 10.9215L86.7204 10.9202Z"
+                fill="#BE1E2D" />
+              <path
+                d="M94.5946 15.3244C94.8631 16.0932 95.2462 16.6494 95.7439 16.9932C96.262 17.3902 96.8977 17.603 97.5504 17.598C98.3053 17.5959 99.0491 17.4161 99.7216 17.0732L100.82 16.5261C101.051 16.4199 101.3 16.3572 101.554 16.3411C101.835 16.3432 102.109 16.4177 102.352 16.5576C102.606 16.6964 102.819 16.8984 102.971 17.144C103.119 17.3724 103.199 17.6382 103.201 17.9102C103.201 18.6291 102.686 19.282 101.655 19.8689C100.399 20.5835 98.9607 20.9408 97.3392 20.9408C96.3006 20.9462 95.2725 20.733 94.3218 20.315C93.3809 19.9017 92.5507 19.2725 91.8986 18.4783C90.9366 17.3159 90.4555 15.8155 90.4555 13.977C90.4467 12.7839 90.7468 11.6088 91.3266 10.566C91.8898 9.53769 92.7161 8.67746 93.7209 8.0733C94.7301 7.46136 95.8901 7.1433 97.0702 7.15494C98.2001 7.14471 99.3111 7.44514 100.282 8.02344C101.242 8.5886 102.034 9.40088 102.574 10.3757C103.124 11.3503 103.41 12.4514 103.404 13.5703C103.404 14.1825 103.277 14.6269 103.024 14.9032C102.77 15.1796 102.348 15.3191 101.756 15.3217L94.5946 15.3244ZM99.6456 12.7005C99.2371 11.0956 98.3625 10.2931 97.0217 10.2931C95.8427 10.2931 94.9891 11.0956 94.4608 12.7005H99.6456Z"
+                fill="#BE1E2D" />
+              <path
+                d="M109.217 15.3244C109.486 16.0932 109.869 16.6494 110.367 16.9932C110.885 17.3902 111.52 17.6031 112.173 17.598C112.928 17.5959 113.672 17.4161 114.344 17.0732L115.443 16.5261C115.674 16.4199 115.923 16.3572 116.177 16.3411C116.46 16.3432 116.737 16.4192 116.981 16.5615C117.235 16.7004 117.448 16.9024 117.601 17.148C117.748 17.3764 117.828 17.6421 117.83 17.9141C117.83 18.6331 117.315 19.286 116.285 19.8729C115.029 20.5874 113.59 20.9447 111.969 20.9447C110.93 20.9501 109.902 20.7369 108.951 20.3189C108.01 19.9057 107.18 19.2764 106.528 18.4822C105.566 17.3198 105.085 15.8194 105.085 13.9809C105.076 12.7878 105.376 11.6127 105.956 10.5699C106.519 9.54163 107.345 8.6814 108.35 8.07723C109.359 7.46529 110.519 7.14724 111.7 7.15888C112.829 7.14864 113.94 7.44908 114.911 8.02738C115.872 8.59254 116.663 9.40482 117.203 10.3797C117.753 11.3542 118.039 12.4553 118.034 13.5742C118.034 14.1865 117.907 14.6308 117.653 14.9072C117.4 15.1836 116.977 15.3231 116.386 15.3257L109.217 15.3244ZM114.268 12.7005C113.86 11.0956 112.985 10.2931 111.644 10.2931C110.465 10.2931 109.612 11.0956 109.084 12.7005H114.268Z"
+                fill="#BE1E2D" />
+              <path
+                d="M124.235 8.62565C125.155 7.66356 126.016 7.18252 126.821 7.18252C127.345 7.1705 127.854 7.3581 128.245 7.7073C128.435 7.87109 128.588 8.07506 128.69 8.30459C128.793 8.53413 128.844 8.78354 128.839 9.03497C128.839 9.59299 128.678 9.99313 128.357 10.2354C128.036 10.4777 127.542 10.7059 126.874 10.9202C125.937 11.2351 125.258 11.5587 124.836 11.8911C124.436 12.2059 124.236 12.7307 124.235 13.4654V18.721C124.255 19.2771 124.072 19.8214 123.721 20.2534C123.378 20.6618 122.905 20.866 122.3 20.866C122.036 20.8765 121.773 20.8257 121.531 20.7176C121.29 20.6095 121.076 20.447 120.908 20.2429C120.559 19.8137 120.375 19.273 120.391 18.7197V9.46267C120.391 8.76909 120.546 8.25393 120.857 7.9172C121.025 7.71179 121.236 7.54634 121.476 7.43286C121.715 7.31939 121.977 7.26076 122.242 7.26123C123.142 7.26386 123.806 7.71867 124.235 8.62565Z"
+                fill="#BE1E2D" />
+            </svg></div>
+        </a>
+        <div class="nav-main"><a href="https://trakteer.id/manage/dashboard" class=""><svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M1 10H7C7.55 10 8 9.55 8 9V1C8 0.45 7.55 0 7 0H1C0.45 0 0 0.45 0 1V9C0 9.55 0.45 10 1 10ZM1 18H7C7.55 18 8 17.55 8 17V13C8 12.45 7.55 12 7 12H1C0.45 12 0 12.45 0 13V17C0 17.55 0.45 18 1 18ZM11 18H17C17.55 18 18 17.55 18 17V9C18 8.45 17.55 8 17 8H11C10.45 8 10 8.45 10 9V17C10 17.55 10.45 18 11 18ZM10 1V5C10 5.55 10.45 6 11 6H17C17.55 6 18 5.55 18 5V1C18 0.45 17.55 0 17 0H11C10.45 0 10 0.45 10 1Z"
+                fill="#737373" />
+            </svg><span> Dashboard </span></a><a href="https://trakteer.id/LucidAstracelestia" class=""><i class="icon icon-world"></i><span class="ml-10"> My Page </span></a><a href="https://trakteer.id/explore" class=""><i
+              class="icon icon-map"></i><span class="ml-10"> Explore </span></a></div>
+      </div><a class="nav-search--mobile right-icon hide-md hide-lg">
+        <div class="search-placeholder"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M9.625 8.49998H9.0325L8.8225 8.29748C9.7225 7.24748 10.1875 5.81498 9.9325 4.29248C9.58 2.20748 7.84 0.542481 5.74 0.287481C2.5675 -0.102519 -0.102504 2.56748 0.287496 5.73998C0.542496 7.83998 2.2075 9.57998 4.2925 9.93248C5.815 10.1875 7.2475 9.72248 8.2975 8.82248L8.5 9.03248V9.62498L11.6875 12.8125C11.995 13.12 12.4975 13.12 12.805 12.8125C13.1125 12.505 13.1125 12.0025 12.805 11.695L9.625 8.49998ZM5.125 8.49998C3.2575 8.49998 1.75 6.99248 1.75 5.12498C1.75 3.25748 3.2575 1.74998 5.125 1.74998C6.9925 1.74998 8.5 3.25748 8.5 5.12498C8.5 6.99248 6.9925 8.49998 5.125 8.49998Z"
+              fill="#737373" />
+          </svg></div><input class="search-input" type="text" placeholder="Search" spellcheck="false">
+        <div class="search-close hide"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M18.3 5.71C17.91 5.32 17.28 5.32 16.89 5.71L12 10.59L7.10997 5.7C6.71997 5.31 6.08997 5.31 5.69997 5.7C5.30997 6.09 5.30997 6.72 5.69997 7.11L10.59 12L5.69997 16.89C5.30997 17.28 5.30997 17.91 5.69997 18.3C6.08997 18.69 6.71997 18.69 7.10997 18.3L12 13.41L16.89 18.3C17.28 18.69 17.91 18.69 18.3 18.3C18.69 17.91 18.69 17.28 18.3 16.89L13.41 12L18.3 7.11C18.68 6.73 18.68 6.09 18.3 5.71Z"
+              fill="#444444" />
+          </svg></div>
+        <div class="search-box hvr-none">
+          <div style="overflow: auto; max-height: calc(100vh - 132px);">
+            <div>
+              <div class="header bg-default text-black p-10 text-center fs-90 fw-100" style="border-top: 1px solid rgba(0,0,0,0.1);border-bottom: 1px solid rgba(0,0,0,0.1);"> Recent Activity </div>
+              <div class="recent-activities followed-creators d-flex fx-center fx-wrap bg-white p-10">
+                <div class="text-center text-black fw-100 fs-80 op-70"><em>Loading..</em></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a><a class="nav-notif--mobile nav-icon right-icon has-unread hide-md hide-lg"><input class="notification-toggle" type="checkbox" autocomplete="off" />
+        <div class="icon-box"><svg class="icon-notif" width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M7.99999 20C9.09999 20 9.99999 19.1 9.99999 18H5.99999C5.99999 19.1 6.88999 20 7.99999 20ZM14 14V9C14 5.93 12.36 3.36 9.49999 2.68V2C9.49999 1.17 8.82999 0.5 7.99999 0.5C7.16999 0.5 6.49999 1.17 6.49999 2V2.68C3.62999 3.36 1.99999 5.92 1.99999 9V14L0.70999 15.29C0.0799904 15.92 0.51999 17 1.40999 17H14.58C15.47 17 15.92 15.92 15.29 15.29L14 14Z"
+              fill="#737373" />
+          </svg><svg class="icon-notif-close" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M18.3 5.71C17.91 5.32 17.28 5.32 16.89 5.71L12 10.59L7.10997 5.7C6.71997 5.31 6.08997 5.31 5.69997 5.7C5.30997 6.09 5.30997 6.72 5.69997 7.11L10.59 12L5.69997 16.89C5.30997 17.28 5.30997 17.91 5.69997 18.3C6.08997 18.69 6.71997 18.69 7.10997 18.3L12 13.41L16.89 18.3C17.28 18.69 17.91 18.69 18.3 18.3C18.69 17.91 18.69 17.28 18.3 16.89L13.41 12L18.3 7.11C18.68 6.73 18.68 6.09 18.3 5.71Z"
+              fill="#444444" />
+          </svg></div>
+        <div class="notification-box">
+          <div class="progress">
+            <div class="indeterminate"></div>
+          </div>
+          <div class="header fx-between">
+            <div>Notifications</div><small onclick="window.location.href='https://trakteer.id/device-transaction-history'" class="d-flex fx-ai-center hvr-pointer text-secondary hvr-text-primary fs-70" style="margin-top: -5px; margin-right: -5px"><i
+                class="icon icon-credit-card icon-xs bg-secondary hvr-bg-primary mr-5"></i> Device Transaction </small>
+          </div>
+          <div class="notification-tabs">
+            <div data-tab-id="system" class="is-active pos-relative"> System <div class="has-unread-tab pos-absolute bd-999 bg-primary-light" style="width: 6px; height: 6px; top: 2px; right: 6px;"></div>
+            </div>
+            <div data-tab-id="as-creator" class="pos-relative"> As Creator <div class="has-unread-tab pos-absolute bd-999 bg-primary-light" style="width: 6px; height: 6px; top: 2px; right: 6px;"></div>
+            </div>
+            <div data-tab-id="as-supporter" class="pos-relative"> As Supporter <div class="has-unread-tab pos-absolute bd-999 bg-primary-light" style="width: 6px; height: 6px; top: 2px; right: 6px;"></div>
+            </div>
+          </div>
+          <div class="notification-list system-notification">
+            <div class="notification-content bg-white text-black p-15 text-center fw-100 pos-relative"></div>
+            <div class="notification-loadmore text-white p-10 text-center fs-90 fw-700 hvr-pointer"></div>
+          </div>
+          <div class="notification-list as-creator-notification hide">
+            <div class="notification-content bg-white text-black p-15 text-center fw-100"></div>
+            <div class="notification-loadmore text-white p-10 text-center fs-90 fw-700 hvr-pointer"></div>
+          </div>
+          <div class="notification-list as-supporter-notification hide">
+            <div class="notification-content bg-white text-black p-15 text-center fw-100"></div>
+            <div class="notification-loadmore text-white p-10 text-center fs-90 fw-700 hvr-pointer"></div>
+          </div>
+        </div>
+      </a><input class="menu-toggle hide-md hide-lg" type="checkbox" autocomplete="off" /><a class="nav-toggle hide-md hide-lg"><i></i><i></i><i></i></a>
+      <div class="nav-items"><a class="nav-search">
+          <div class="search-placeholder"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M9.625 8.49998H9.0325L8.8225 8.29748C9.7225 7.24748 10.1875 5.81498 9.9325 4.29248C9.58 2.20748 7.84 0.542481 5.74 0.287481C2.5675 -0.102519 -0.102504 2.56748 0.287496 5.73998C0.542496 7.83998 2.2075 9.57998 4.2925 9.93248C5.815 10.1875 7.2475 9.72248 8.2975 8.82248L8.5 9.03248V9.62498L11.6875 12.8125C11.995 13.12 12.4975 13.12 12.805 12.8125C13.1125 12.505 13.1125 12.0025 12.805 11.695L9.625 8.49998ZM5.125 8.49998C3.2575 8.49998 1.75 6.99248 1.75 5.12498C1.75 3.25748 3.2575 1.74998 5.125 1.74998C6.9925 1.74998 8.5 3.25748 8.5 5.12498C8.5 6.99248 6.9925 8.49998 5.125 8.49998Z"
+                fill="#737373" />
+            </svg></div><input class="search-input" type="text" placeholder="Cari kreator, kategori, dll" spellcheck="false">
+          <div class="search-close hide"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M18.3 5.71C17.91 5.32 17.28 5.32 16.89 5.71L12 10.59L7.10997 5.7C6.71997 5.31 6.08997 5.31 5.69997 5.7C5.30997 6.09 5.30997 6.72 5.69997 7.11L10.59 12L5.69997 16.89C5.30997 17.28 5.30997 17.91 5.69997 18.3C6.08997 18.69 6.71997 18.69 7.10997 18.3L12 13.41L16.89 18.3C17.28 18.69 17.91 18.69 18.3 18.3C18.69 17.91 18.69 17.28 18.3 16.89L13.41 12L18.3 7.11C18.68 6.73 18.68 6.09 18.3 5.71Z"
+                fill="#444444" />
+            </svg></div>
+          <div class="search-box hvr-none">
+            <div style="overflow: auto; max-height: calc(100vh - 132px);">
+              <div>
+                <div class="header bg-default text-black p-10 text-center fs-90 fw-100" style="border-top: 1px solid rgba(0,0,0,0.1);border-bottom: 1px solid rgba(0,0,0,0.1);"> Recent Activity </div>
+                <div class="recent-activities followed-creators d-flex fx-center fx-wrap bg-white p-10">
+                  <div class="text-center text-black fw-100 fs-80 op-70"><em>Loading..</em></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a><a class="nav-notif nav-icon has-unread"><input class="notification-toggle" type="checkbox" autocomplete="off" />
+          <div class="icon-box"><svg class="icon-notif" width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M7.99999 20C9.09999 20 9.99999 19.1 9.99999 18H5.99999C5.99999 19.1 6.88999 20 7.99999 20ZM14 14V9C14 5.93 12.36 3.36 9.49999 2.68V2C9.49999 1.17 8.82999 0.5 7.99999 0.5C7.16999 0.5 6.49999 1.17 6.49999 2V2.68C3.62999 3.36 1.99999 5.92 1.99999 9V14L0.70999 15.29C0.0799904 15.92 0.51999 17 1.40999 17H14.58C15.47 17 15.92 15.92 15.29 15.29L14 14Z"
+                fill="#737373" />
+            </svg><svg class="icon-notif-close" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M18.3 5.71C17.91 5.32 17.28 5.32 16.89 5.71L12 10.59L7.10997 5.7C6.71997 5.31 6.08997 5.31 5.69997 5.7C5.30997 6.09 5.30997 6.72 5.69997 7.11L10.59 12L5.69997 16.89C5.30997 17.28 5.30997 17.91 5.69997 18.3C6.08997 18.69 6.71997 18.69 7.10997 18.3L12 13.41L16.89 18.3C17.28 18.69 17.91 18.69 18.3 18.3C18.69 17.91 18.69 17.28 18.3 16.89L13.41 12L18.3 7.11C18.68 6.73 18.68 6.09 18.3 5.71Z"
+                fill="#444444" />
+            </svg></div>
+          <div class="notification-box">
+            <div class="progress">
+              <div class="indeterminate"></div>
+            </div>
+            <div class="header fx-between">
+              <div>Notifications</div><small onclick="window.location.href='https://trakteer.id/device-transaction-history'" class="d-flex fx-ai-center hvr-pointer text-secondary hvr-text-primary fs-70" style="margin-top: -5px; margin-right: -5px"><i
+                  class="icon icon-credit-card icon-xs bg-secondary hvr-bg-primary mr-5"></i> Device Transaction </small>
+            </div>
+            <div class="notification-tabs">
+              <div data-tab-id="system" class="is-active pos-relative"> System <div class="has-unread-tab pos-absolute bd-999 bg-primary-light" style="width: 6px; height: 6px; top: 2px; right: 6px;"></div>
+              </div>
+              <div data-tab-id="as-creator" class="pos-relative"> As Creator <div class="has-unread-tab pos-absolute bd-999 bg-primary-light" style="width: 6px; height: 6px; top: 2px; right: 6px;"></div>
+              </div>
+              <div data-tab-id="as-supporter" class="pos-relative"> As Supporter <div class="has-unread-tab pos-absolute bd-999 bg-primary-light" style="width: 6px; height: 6px; top: 2px; right: 6px;"></div>
+              </div>
+            </div>
+            <div class="notification-list system-notification">
+              <div class="notification-content bg-white text-black p-15 text-center fw-100 pos-relative"></div>
+              <div class="notification-loadmore text-white p-10 text-center fs-90 fw-700 hvr-pointer"></div>
+            </div>
+            <div class="notification-list as-creator-notification hide">
+              <div class="notification-content bg-white text-black p-15 text-center fw-100"></div>
+              <div class="notification-loadmore text-white p-10 text-center fs-90 fw-700 hvr-pointer"></div>
+            </div>
+            <div class="notification-list as-supporter-notification hide">
+              <div class="notification-content bg-white text-black p-15 text-center fw-100"></div>
+              <div class="notification-loadmore text-white p-10 text-center fs-90 fw-700 hvr-pointer"></div>
+            </div>
+          </div>
+        </a>
+        <div class="item hide-md">
+          <div class="avatar-container"><img class="avatar lozad" src="" data-src="https://trakteer.id/storage/images/avatar/ava-xzTIw7IgoaZ86nI35aKZhfPrVryD12qE1627345444.png">
+            <div class="description">
+              <h4> Lucid Astracelestia<br><small>creator</small></h4>
+            </div>
+          </div>
+        </div>
+        <div class="tab-menu-mobile d-flex full-width mb-30 hide-md hide-lg"><a id="creator-menu-toggle" class="is-active border-none pb-5"> Menu Creator </a><a id="supporter-menu-toggle" class=" border-none pb-5"> Menu Supporter </a></div>
+        <div class="sidebar-separator op-40 mb-15" style="padding: 0; border-bottom: 2px dotted; border-color: #ebebeb;"></div>
+        <div class="d-flex fx-jc-center op-70 hide-md hide-lg"><a href="https://trakteer.id/LucidAstracelestia" class="d-flex fx-ai-center text-white text-no-wrap fs-90 border-none pb-0 mr-15"><i class="bg-white icon icon-world mr-5"></i> My Page
+          </a><a href="https://trakteer.id/explore" class="d-flex fx-ai-center text-white fs-90 border-none pb-0 mr-15"><i class="bg-white icon icon-map mr-5"></i> Explore </a><a href="https://help.trakteer.id"
+            class="d-flex fx-ai-center text-white border-none pb-0 fs-90"><i class="bg-white icon icon-book mr-5"></i> Guide </a></div>
+        <div class="sidebar-separator op-40 mt-15 mb-20" style="padding: 0; border-bottom: 2px dotted; border-color: #ebebeb;"></div>
+        <div id="creator-menu" class="active-menu "><a href="https://trakteer.id/manage/dashboard" class="d-flex op-70 hide-md hide-lg "><span class="icon icon-chart-bar-outline bg-white mr-5"></span> Overview </a><a
+            href="https://trakteer.id/manage/my-page" class="d-flex op-70 hide-md hide-lg "><span class="icon icon-edit bg-white mr-5"></span> Edit Page </a><a href="https://trakteer.id/manage/balance" class="d-flex op-70 hide-md hide-lg "><span
+              class="icon icon-credit-card bg-white mr-5"></span> My Balance </a><a href="https://trakteer.id/manage/tip-received" class="d-flex op-70 hide-md hide-lg "><span class="icon icon-heart bg-white mr-5"></span> Support </a><a
+            href="https://trakteer.id/manage/goal-history" class="d-flex op-70 hide-md hide-lg "><span class="icon icon-radar bg-white mr-5"></span> Goal </a>
+          <div class="sidebar-separator mt-10 mb-10 op-30" style="padding: 0; border-bottom: 2px solid; border-color: #ebebeb;"></div><a href="https://trakteer.id/manage/posts" class="d-flex op-70 hide-md hide-lg "><span
+              class="icon icon-document-text bg-white mr-5"></span> Community Posts </a><a href="https://trakteer.id/manage/showcase" class="d-flex op-70 hide-md hide-lg "><span class="icon icon-gift bg-white mr-5"></span> Rewards </a><a
+            href="https://trakteer.id/manage/stream-settings" class="d-flex op-70 hide-md hide-lg active"><span class="icon icon-video-outline bg-white mr-5"></span> Stream Overlay </a><a href="https://trakteer.id/manage/website-embeds"
+            class="d-flex op-70 hide-md hide-lg "><span class="icon icon-website bg-white mr-5"></span> Website Embeds </a><a href="https://trakteer.id/manage/webhook" class="d-flex op-70 hide-md hide-lg "><span
+              class="icon icon-radar bg-white mr-5"></span> Webhook &amp; API </a>
+          <div class="sidebar-separator mt-10 mb-10 op-30" style="padding: 0; border-bottom: 2px solid; border-color: #ebebeb;"></div><a href="https://trakteer.id/manage/my-supporters/users" class="d-flex op-70 hide-md hide-lg "><span
+              class="icon icon-group-outline bg-white mr-5"></span> My Supporter </a><a href="https://trakteer.id/manage/followers" class="d-flex op-70 hide-md hide-lg "><span class="icon icon-group-outline bg-white mr-5"></span> My Followers </a><a
+            href="https://trakteer.id/manage/referral" class="d-flex op-70 hide-md hide-lg "><span class="icon icon-group-outline bg-white mr-5"></span> My Referrals </a>
+          <div class="sidebar-separator mt-10 mb-10 op-30" style="padding: 0; border-bottom: 2px solid; border-color: #ebebeb;"></div><a href="https://trakteer.id/manage/account-settings" class="d-flex op-70 hide-md hide-lg "><span
+              class="icon icon-user-outline bg-white mr-5"></span> My Account </a><a href="https://trakteer.id/manage/app-settings" class="d-flex op-70 hide-md hide-lg "><span class="icon icon-cog bg-white mr-5"></span> Settings </a>
+        </div>
+        <div id="supporter-menu" class="active-menu hide"><a href="https://trakteer.id/manage/unlocked-contents" class="d-flex op-70 hide-md hide-lg "><span class="icon icon-lock-open-outline bg-white mr-5"></span> My Rewards </a><a
+            href="https://trakteer.id/manage/tip-given" class="d-flex op-70 hide-md hide-lg "><span class="icon icon-heart-outline bg-white mr-5"></span> Support Given </a><a href="https://trakteer.id/manage/following"
+            class="d-flex op-70 hide-md hide-lg "><span class="icon icon-user-add-outline bg-white mr-5"></span> Followed Creators </a><a href="https://trakteer.id/manage/account-settings/supporter" class="d-flex op-70 hide-md hide-lg "><span
+              class="icon icon-user-outline bg-white mr-5"></span> My Account </a></div><a href="https://trakteer.id/logout" class="fx-jc-center text-center bg-transparent mt-40 mb-40 pl-50 pr-50 pt-5 pb-10 op-70 hide-md hide-lg"
+          style="border: 1px solid; border-radius: 9999px; width: auto;"> Logout </a>
+        <div class="settings"><label class="dropdown ">
+            <div class=" d-flex fx-ai-center dropdown-button">
+              <div class="user"><img class="avatar lozad" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMsj46uBwAELAGu61B4eQAAAABJRU5ErkJggg=="
+                  data-src="https://trakteer.id/storage/images/avatar/ava-xzTIw7IgoaZ86nI35aKZhfPrVryD12qE1627345444.png">
+                <div class="profile">
+                  <div class="name">Lucid Astracelestia</div>
+                  <div class="username">@Lucid_Astracelestia</div>
+                </div><svg width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0.70999 1.71L3.29999 4.3C3.68999 4.69 4.31999 4.69 4.70999 4.3L7.29999 1.71C7.92999 1.08 7.47999 0 6.58999 0H1.40999C0.51999 0 0.0799904 1.08 0.70999 1.71Z" fill="#737373" />
+                </svg>
+              </div>
+            </div><input type="checkbox" class="dropdown-toggle" autocomplete="off">
+            <ul class="dropdown-menu right-aligned" style="max-height: 70vh; overflow: auto;">
+              <li><a href="https://trakteer.id/manage/dashboard" class="no-underline pb-10"> Overview </a></li>
+              <li><a href="https://trakteer.id/manage/my-page" class="no-underline pb-10"> Edit Page </a></li>
+              <li><a href="https://trakteer.id/manage/balance" class="no-underline pb-10"> My Balance </a></li>
+              <li><a href="https://trakteer.id/manage/tip-received" class="no-underline pb-10"> Support </a></li>
+              <li><a href="https://trakteer.id/manage/goal-history" class="no-underline pb-10"> Goal </a></li>
+              <li>
+                <hr class="m-0 op-20">
+              </li>
+              <li><a href="https://trakteer.id/manage/posts" class="no-underline pb-10"> Community Posts </a></li>
+              <li><a href="https://trakteer.id/manage/showcase" class="no-underline pb-10"> Rewards </a></li>
+              <li><a href="https://trakteer.id/manage/stream-settings" class="no-underline pb-10"> Stream Overlay </a></li>
+              <li><a href="https://trakteer.id/manage/website-embeds" class="no-underline pb-10"> Website Embeds </a></li>
+              <li><a href="https://trakteer.id/manage/webhook" class="no-underline pb-10"> Webhook &amp; API </a></li>
+              <li>
+                <hr class="m-0 op-20">
+              </li>
+              <li><a href="https://trakteer.id/manage/my-supporters/users" class="no-underline pb-10"> My Supporter </a></li>
+              <li><a href="https://trakteer.id/manage/followers" class="no-underline pb-10"> My Followers </a></li>
+              <li><a href="https://trakteer.id/manage/referral" class="no-underline pb-10"> My Referrals </a></li>
+              <li>
+                <hr class="m-0 op-20">
+              </li>
+              <li><a href="https://trakteer.id/manage/account-settings" class="no-underline pb-10"> My Account </a></li>
+              <li><a href="https://trakteer.id/manage/app-settings" class="no-underline pb-10"> Settings </a></li>
+              <li>
+                <hr class="m-0 op-20">
+              </li>
+              <li><a href="https://help.trakteer.id" class="no-underline pb-10"><i class="icon icon-book"></i> Guide </a></li>
+              <li>
+                <hr class="m-0 op-20">
+              </li>
+              <li><a href="https://trakteer.id/manage/unlocked-contents" class="no-underline pb-10"> Open Supporter Menu </a></li>
+              <li><a href="https://trakteer.id/manage/dashboard" class="no-underline pb-10"> Open Creator Menu </a></li>
+              <li>
+                <hr class="m-0 op-20">
+              </li>
+              <li><a href="https://trakteer.id/logout" class="no-underline pb-10"> Logout </a></li>
+            </ul>
+          </label></div>
+      </div>
+    </div>
+  </div>
+  <div id="wrapper" style="background: #F8F7F7">
+    <div id="sidebar" class="hide-sm">
+      <div class="menu pt-20"><a href="https://trakteer.id/manage/dashboard" class=" d-flex pos-relative"><span class="icon icon-chart-bar-outline mr-5"></span> Overview </a><a href="https://trakteer.id/manage/my-page"
+          class=" d-flex pos-relative"><span class="icon icon-edit mr-5"></span> Edit Page </a><a href="https://trakteer.id/manage/balance" class=" d-flex pos-relative"><span class="icon icon-credit-card mr-5"></span> My Balance </a><a
+          href="https://trakteer.id/manage/tip-received" class=" d-flex pos-relative"><span class="icon icon-heart mr-5"></span> Support </a><a href="https://trakteer.id/manage/goal-history" class=" d-flex pos-relative"><span
+            class="icon icon-radar mr-5"></span> Goal </a>
+        <div class="sidebar-separator" style="padding: 0; border-bottom: 2px solid; border-color: #ebebeb;"></div><a href="https://trakteer.id/manage/posts" class=" d-flex pos-relative"><span class="icon icon-document-text mr-5"></span> Community
+          Posts </a><a href="https://trakteer.id/manage/showcase" class=" d-flex pos-relative"><span class="icon icon-gift mr-5"></span> Rewards </a><a href="https://trakteer.id/manage/stream-settings" class="active d-flex pos-relative"><span
+            class="icon icon-video-outline mr-5"></span> Stream Overlay <span class="bd-50 bg-primary fs-70 pb-0 pl-5 pr-5 pt-0 text-white pos-absolute" style="right: 0; top: 0">NEW</span></a><a href="https://trakteer.id/manage/website-embeds"
+          class=" d-flex pos-relative"><span class="icon icon-website mr-5"></span> Website Embeds </a><a href="https://trakteer.id/manage/webhook" class=" d-flex pos-relative"><span class="icon icon-radar mr-5"></span> Webhook &amp; API </a>
+        <div class="sidebar-separator" style="padding: 0; border-bottom: 2px solid; border-color: #ebebeb;"></div><a href="https://trakteer.id/manage/my-supporters/users" class=" d-flex pos-relative"><span class="icon icon-group-outline mr-5"></span>
+          My Supporter </a><a href="https://trakteer.id/manage/followers" class=" d-flex pos-relative"><span class="icon icon-group-outline mr-5"></span> My Followers </a><a href="https://trakteer.id/manage/referral"
+          class=" d-flex pos-relative"><span class="icon icon-group-outline mr-5"></span> My Referrals </a>
+        <div class="sidebar-separator" style="padding: 0; border-bottom: 2px solid; border-color: #ebebeb;"></div><a href="https://trakteer.id/manage/account-settings" class=" d-flex pos-relative"><span class="icon icon-user-outline mr-5"></span> My
+          Account </a><a href="https://trakteer.id/manage/app-settings" class=" d-flex pos-relative"><span class="icon icon-cog mr-5"></span> Settings </a>
+        <div class="sidebar-separator" style="padding: 0; border-bottom: 2px solid; border-color: #ebebeb;"></div><a href="https://trakteer.id/manage/unlocked-contents" class="d-flex pos-relative text-no-wrap"><span
+            class="icon icon-arrow-sync mr-5"></span> Open as Supporter </a><a href="https://trakteer.id/logout" class="text-center bg-transparent mt-20 pl-50 pr-50 pt-5 pb-10" style="border: 1px solid; border-radius: 9999px; width: auto;"> Logout
+        </a>
+      </div>
+    </div>
+    <div id="my-page-container" class="admin-container">
+      <article id="page-settings" class="tab-content current">
+        <form class="form row fx-ai-start">
+          <div class="widgets bd-25 border-box full-width d-flex fx-wrap mb-20 ml-0 mr-20 mt-0 pt-0 pb-0"><a class="text-black p-10 bd-25 mr-10 mb-5 is-active" href="https://trakteer.id/manage/stream-settings/new-tip"> Notifikasi </a><a
+              class="text-black p-10 bd-25 mr-10 mb-5 " href="https://trakteer.id/manage/stream-settings/top-supporters"> Leaderboard </a><a class="text-black p-10 bd-25 mr-10 mb-5 " href="https://trakteer.id/manage/stream-settings/last-supporters">
+              Last Supporter </a><a class="text-black p-10 bd-25 mr-10 mb-5 " href="https://trakteer.id/manage/stream-settings/target"> Target / Goal </a><a class="text-black p-10 bd-25 mr-10 mb-5 "
+              href="https://trakteer.id/manage/stream-settings/running-text"> Running Text </a><a class="text-black p-10 bd-25 mr-10 mb-5 " href="https://trakteer.id/manage/stream-settings/subathon"> Subathon </a><a
+              class="text-black p-10 bd-25 mr-10 mb-5 " href="https://trakteer.id/manage/stream-settings/qrcode"> QR Code </a><a class="text-black p-10 bd-25 mr-5 " href="https://trakteer.id/manage/stream-settings/settings"> Settings </a></div>
+          <div id="new-tip-notification" class="row full-width pl-0 pr-0" style="max-width: 1366px">
+            <div class="col-xs-12 col-sm-12 col-md-7 pos-relative mb-5">
+              <div class="btn btn-default text-black hvr-none btn-active full-width btn-outline bd-bottom-none fx-between pt-10 pb-10 mb-0">
+                <div>Konfigurasi</div>
+                <div class="float-right"><a class="send-test-message btn btn-success btn-pill btn-outline" style="margin-bottom: 2px" data-user-id="mv7dk486wak5b690"> Send Test Message </a><small id="countdown"
+                    class="text-primary ml-10">(10:00)</small></div>
+              </div>
+              <div class="border-box block border-1-default mt-0 pt-20 pb-15 pl-15 pr-15 fix-margin-1 fs-90">
+                <div class="form-group row mb-15 ">
+                  <div class=" col-xs-12 col-sm-3 d-flex fx-ai-center "><label>Tema</label></div>
+                  <div class=" col-xs-12 col-sm-9 "><select id="notification-themes" class="select input full-width" name="nt_theme">
+                      <option value="default">Default</option>
+                      <option value="simple">Simple</option>
+                      <option value="playful" selected>Playful</option>
+                      <option value="retro">Retro</option>
+                    </select></div>
+                </div>
+                <div data-exclusive-options="theme:default">
+                  <div class="form-group row ">
+                    <div class=" col-xs-12 col-sm-3 d-flex fx-ai-center "><label>Palet Warna</label></div>
+                    <div class="d-flex fx-wrap col-xs-12 col-sm-9 ">
+                      <div class="mr-10">
+                        <div class="fgroup-palette nt-1-clr1"></div>
+                        <div class="text-center fs-80 mt-5 mb-5">Warna 1</div>
+                      </div>
+                      <div class="mr-10">
+                        <div class="fgroup-palette nt-1-clr2"></div>
+                        <div class="text-center fs-80 mt-5 mb-5">Warna 2</div>
+                      </div>
+                      <div class="mr-10">
+                        <div class="fgroup-palette nt-1-clr3"></div>
+                        <div class="text-center fs-80 mt-5 mb-5">Warna 3</div>
+                      </div>
+                      <div class="mr-10">
+                        <div data-theme-id="1" id="reset-nt-palette" class="btn btn-default btn-single-icon p-5" style="padding-bottom: 2px"><i class="icon icon-arrow-sync icon-xs bg-warning-dark"></i></div>
+                        <div class="text-center fs-80 mt-5">Reset</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div data-exclusive-options="theme:simple">
+                  <div class="form-group row ">
+                    <div class=" col-xs-12 col-sm-3 d-flex fx-ai-center "><label>Palet Warna</label></div>
+                    <div class="d-flex fx-wrap col-xs-12 col-sm-9 ">
+                      <div class="mr-10">
+                        <div class="fgroup-palette nt-2-clr1"></div>
+                        <div class="text-center fs-80 mt-5 mb-5">Warna 1</div>
+                      </div>
+                      <div class="mr-10">
+                        <div class="fgroup-palette nt-2-clr2"></div>
+                        <div class="text-center fs-80 mt-5 mb-5">Warna 2</div>
+                      </div>
+                      <div class="mr-10">
+                        <div class="fgroup-palette nt-2-clr3"></div>
+                        <div class="text-center fs-80 mt-5 mb-5">Warna 3</div>
+                      </div>
+                      <div class="mr-10">
+                        <div data-theme-id="2" id="reset-nt-palette" class="btn btn-default btn-single-icon p-5" style="padding-bottom: 2px"><i class="icon icon-arrow-sync icon-xs bg-warning-dark"></i></div>
+                        <div class="text-center fs-80 mt-5">Reset</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div data-exclusive-options="theme:playful">
+                  <div class="form-group row ">
+                    <div class=" col-xs-12 col-sm-3 d-flex fx-ai-center "><label>Palet Warna</label></div>
+                    <div class="d-flex fx-wrap col-xs-12 col-sm-9 ">
+                      <div class="mr-10">
+                        <div class="fgroup-palette nt-3-clr1"></div>
+                        <div class="text-center fs-80 mt-5 mb-5">Warna 1</div>
+                      </div>
+                      <div class="mr-10">
+                        <div class="fgroup-palette nt-3-clr2"></div>
+                        <div class="text-center fs-80 mt-5 mb-5">Warna 2</div>
+                      </div>
+                      <div class="mr-10">
+                        <div class="fgroup-palette nt-3-clr3"></div>
+                        <div class="text-center fs-80 mt-5 mb-5">Warna 3</div>
+                      </div>
+                      <div class="mr-10">
+                        <div class="fgroup-palette nt-3-clr4"></div>
+                        <div class="text-center fs-80 mt-5 mb-5">Warna 4</div>
+                      </div>
+                      <div class="mr-10">
+                        <div data-theme-id="3" id="reset-nt-palette" class="btn btn-default btn-single-icon p-5" style="padding-bottom: 2px"><i class="icon icon-arrow-sync icon-xs bg-warning-dark"></i></div>
+                        <div class="text-center fs-80 mt-5">Reset</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div data-exclusive-options="theme:retro">
+                  <div class="form-group row ">
+                    <div class=" col-xs-12 col-sm-3 d-flex fx-ai-center "><label>Palet Warna</label></div>
+                    <div class="d-flex fx-wrap col-xs-12 col-sm-9 ">
+                      <div class="mr-10">
+                        <div class="fgroup-palette nt-4-clr1"></div>
+                        <div class="text-center fs-80 mt-5 mb-5">Latar</div>
+                      </div>
+                      <div class="mr-10">
+                        <div class="fgroup-palette nt-4-clr2"></div>
+                        <div class="text-center fs-80 mt-5 mb-5">Highlight</div>
+                      </div>
+                      <div class="mr-10">
+                        <div class="fgroup-palette nt-4-clr3"></div>
+                        <div class="text-center fs-80 mt-5 mb-5">Teks 1</div>
+                      </div>
+                      <div class="mr-10">
+                        <div class="fgroup-palette nt-4-clr4"></div>
+                        <div class="text-center fs-80 mt-5 mb-5">Teks 2</div>
+                      </div>
+                      <div class="mr-10">
+                        <div class="fgroup-palette nt-4-clr5"></div>
+                        <div class="text-center fs-80 mt-5 mb-5">Border</div>
+                      </div>
+                      <div class="mr-10">
+                        <div data-theme-id="4" id="reset-nt-palette" class="btn btn-default btn-single-icon p-5" style="padding-bottom: 2px"><i class="icon icon-arrow-sync icon-xs bg-warning-dark"></i></div>
+                        <div class="text-center fs-80 mt-5">Reset</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row mt-10 mb-15 ">
+                  <div class=" col-xs-12 col-sm-3 d-flex fx-ai-center "><label>Font</label></div>
+                  <div class=" col-xs-12 col-sm-9 "><select id="notification-custom-font-option" class="select input full-width">
+                      <optgroup label="Theme Font">
+                        <option value="default">Default</option>
+                      </optgroup>
+                    </select></div>
+                </div>
+                <div class="mt-25 mb-20" style="border-top: 1px solid #e3e3e3"></div>
+                <div class="form-group row mb-20 ">
+                  <div class=" col-xs-12 col-sm-3 d-flex fx-ai-center "><label>Durasi</label></div>
+                  <div class=" col-xs-12 col-sm-9 ">
+                    <div class="input-group full-width"><input id="notification-delay-option" type="number" class="input bd-25" name="nt_delay" min="5" max="10" value="10" />
+                      <div class="append bg-default"> detik </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row ">
+                  <div class=" col-xs-12 col-sm-3 d-flex fx-ai-center "><label>Suara</label></div>
+                  <div class=" col-xs-12 col-sm-9 ">
+                    <div class="pretty p-svg p-curve mb-5"><input id="notification-sound-option" type="checkbox" checked />
+                      <div class="state p-success"><svg class="svg svg-icon" viewBox="0 0 20 20">
+                          <path
+                            d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z"
+                            style="stroke: white;fill:white;"></path>
+                        </svg><label class="text-ellipsis full-width"> Aktifkan Suara </label></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row mt-10 ">
+                  <div class=" col-xs-12 col-sm-3 d-flex fx-ai-center "><label>Custom Audio</label></div>
+                  <div class=" col-xs-12 col-sm-9 ">
+                    <div class="row">
+                      <div id="notification-play-audio-option" class=" mr-10">
+                        <div class="btn btn-xs btn-default btn-icon btn-single-icon full-height border-box pr-20"><span class="icon icon-media-play"></span></div>
+                      </div>
+                      <div class="col-xs pr-0 pl-0"><input id="notification-audio-option" name="nt_audio" type="file" class="input p-10 full-width" accept="audio/mpeg,audio/ogg" /></div>
+                      <div id="notification-remove-audio-option" class=" ml-10">
+                        <div class="fx-center full-height border-box"><span class="icon icon-times"></span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div data-exclusive-options="theme:default|theme:playful|theme:retro" style="">
+                  <div class="form-group row mt-20 ">
+                    <div class=" col-xs-12 col-sm-3 d-flex fx-ai-center "><label>Text to Speech</label></div>
+                    <div class="d-flex fx-ai-center col-xs-12 col-sm-9 ">
+                      <div class="pretty p-svg p-curve"><input id="notification-tts-option" type="checkbox" checked />
+                        <div class="state p-success"><svg class="svg svg-icon" viewBox="0 0 20 20">
+                            <path
+                              d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z"
+                              style="stroke: white;fill:white;"></path>
+                          </svg><label class="text-ellipsis full-width"> Aktifkan Text to Speech </label></div>
+                      </div>
+                      <div class="d-flex"><label for="modal-tts-settings" id="notifiation-more-tts-option" class="btn btn-default btn-single-icon p-5" style="padding-bottom: 2px"><i class="icon icon-cog icon-xs bg-warning-dark"></i></label>
+                        <div class="text-center fs-80 ml-5" style="margin-top: 3px">Setting</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div data-exclusive-options="theme:simple">
+                  <div class="mt-25 mb-20" style="border-top: 1px solid #e3e3e3"></div>
+                  <div class="form-group row mt-20 ">
+                    <div class=" col-xs-12 col-sm-3 d-flex fx-ai-center "><label>Arah Muncul</label></div>
+                    <div class=" col-xs-12 col-sm-9 "><select id="notification-direction-option" class="select input full-width" name="nt_dir">
+                        <option value="left">Kiri</option>
+                        <option value="right">Kanan</option>
+                      </select></div>
+                  </div>
+                </div>
+                <div data-exclusive-options="theme:playful">
+                  <div class="mt-25 mb-20" style="border-top: 1px solid #e3e3e3"></div>
+                  <div class="form-group row mt-20 ">
+                    <div class=" col-xs-12 col-sm-3 d-flex fx-ai-center "><label>Animated GIF</label></div>
+                    <div class=" col-xs-12 col-sm-9 ">
+                      <div class="row">
+                        <div class="col-xs inline-image"><img id="preview-avatar" height='40px' width='25px' src="https://cdn.trakteer.id/images/mix/love.gif" class="avatar" /></div>
+                        <div class="col-xs pr-0"><input id="notification-gif-option" name="nt_gif" type="file" class="input p-10 full-width" accept="image/gif" /></div>
+                        <div id="notification-remove-gif-option" class="hide ml-10">
+                          <div class="fx-center full-height border-box"><span class="icon icon-times"></span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="widget-generate btn btn-success float-right full-width-sm border-box text-center hide fs-100 mt-30 pt-10 pb-10 mr-5"> Save & Generate URL </div>
+                <div class="clear-both mb-15"></div>
+              </div>
+              <div class="mt-15 mb-20">
+                <div class="form-group row widget-url fx-ai-start block block-secondary border-1-secondary bd-25 pt-20 pb-20 ">
+                  <div class=" col-xs-12 col-sm-3 d-flex fx-ai-center "><label>Widget URL</label></div>
+                  <div class=" col-xs-12 col-sm-9 ">
+                    <div class="input-group full-width"><input class="input bd-25" type="text" name="page" disabled style="font-size: .9em !important"
+                        value="https://trakteer.id/LucidAstracelestia/stream?key=trstream-dp2gqbEcrI3h0EbxvPHg&amp;nt_tts=true&amp;nt_font=Philosopher&amp;nt_mute=false&amp;nt_audio=%2Fstorage%2Faudio%2Fsetting-uploads%2Fjl0865yalez5bgme%2F1657639092_31B0zsEW.mp3&amp;nt_delay=10&amp;nt_theme=playful&amp;nt_2_clr1=rgba%28255%2C+255%2C+255%2C+1%29&amp;nt_2_clr2=rgba%2845%2C+54%2C+80%2C+1%29&amp;nt_2_clr3=rgba%28255%2C+255%2C+255%2C+1%29&amp;nt_3_clr1=rgba%280%2C+0%2C+0%2C+0%29&amp;nt_3_clr2=rgba%280%2C+0%2C+0%2C+1%29&amp;nt_3_clr3=rgba%28255%2C+255%2C+255%2C+1%29&amp;nt_3_clr4=rgba%28255%2C+255%2C+255%2C+1%29&amp;nt_tts_voice_name=female&amp;nt_tts_voice_rate=1.2&amp;nt_tts_max_duration=0&amp;nt_tts_ignore_symbol=false">
+                    </div><a class="btn btn-copy btn-default mt-10"
+                      data-clipboard-text="https://trakteer.id/LucidAstracelestia/stream?key=trstream-dp2gqbEcrI3h0EbxvPHg&amp;nt_tts=true&amp;nt_font=Philosopher&amp;nt_mute=false&amp;nt_audio=%2Fstorage%2Faudio%2Fsetting-uploads%2Fjl0865yalez5bgme%2F1657639092_31B0zsEW.mp3&amp;nt_delay=10&amp;nt_theme=playful&amp;nt_2_clr1=rgba%28255%2C+255%2C+255%2C+1%29&amp;nt_2_clr2=rgba%2845%2C+54%2C+80%2C+1%29&amp;nt_2_clr3=rgba%28255%2C+255%2C+255%2C+1%29&amp;nt_3_clr1=rgba%280%2C+0%2C+0%2C+0%29&amp;nt_3_clr2=rgba%280%2C+0%2C+0%2C+1%29&amp;nt_3_clr3=rgba%28255%2C+255%2C+255%2C+1%29&amp;nt_3_clr4=rgba%28255%2C+255%2C+255%2C+1%29&amp;nt_tts_voice_name=female&amp;nt_tts_voice_rate=1.2&amp;nt_tts_max_duration=0&amp;nt_tts_ignore_symbol=false">
+                      Copy URL </a><a class="btn btn-open-url btn-success mt-10 ml-10" target="_blank"
+                      href="https://trakteer.id/LucidAstracelestia/stream?key=trstream-dp2gqbEcrI3h0EbxvPHg&amp;nt_tts=true&amp;nt_font=Philosopher&amp;nt_mute=false&amp;nt_audio=%2Fstorage%2Faudio%2Fsetting-uploads%2Fjl0865yalez5bgme%2F1657639092_31B0zsEW.mp3&amp;nt_delay=10&amp;nt_theme=playful&amp;nt_2_clr1=rgba%28255%2C+255%2C+255%2C+1%29&amp;nt_2_clr2=rgba%2845%2C+54%2C+80%2C+1%29&amp;nt_2_clr3=rgba%28255%2C+255%2C+255%2C+1%29&amp;nt_3_clr1=rgba%280%2C+0%2C+0%2C+0%29&amp;nt_3_clr2=rgba%280%2C+0%2C+0%2C+1%29&amp;nt_3_clr3=rgba%28255%2C+255%2C+255%2C+1%29&amp;nt_3_clr4=rgba%28255%2C+255%2C+255%2C+1%29&amp;nt_tts_voice_name=female&amp;nt_tts_voice_rate=1.2&amp;nt_tts_max_duration=0&amp;nt_tts_ignore_symbol=false">
+                      Open URL </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="preview-container col-xs-12 col-sm-12 col-md-5 pos-relative mb-5">
+              <div class="btn btn-default text-black hvr-none btn-active full-width btn-outline bd-bottom-none fx-between pt-10 pb-10 mb-0"> Preview </div>
+              <div class="border-box block border-1-default mt-0 pt-20 pb-15 pl-15 pr-15 fix-margin-1 fs-90"><iframe class="widget-preview bg-white"
+                  src="https://trakteer.id/LucidAstracelestia/stream?key=trstream-dp2gqbEcrI3h0EbxvPHg&amp;nt_tts=true&amp;nt_font=Philosopher&amp;nt_mute=false&amp;nt_audio=%2Fstorage%2Faudio%2Fsetting-uploads%2Fjl0865yalez5bgme%2F1657639092_31B0zsEW.mp3&amp;nt_delay=10&amp;nt_theme=playful&amp;nt_2_clr1=rgba%28255%2C+255%2C+255%2C+1%29&amp;nt_2_clr2=rgba%2845%2C+54%2C+80%2C+1%29&amp;nt_2_clr3=rgba%28255%2C+255%2C+255%2C+1%29&amp;nt_3_clr1=rgba%280%2C+0%2C+0%2C+0%29&amp;nt_3_clr2=rgba%280%2C+0%2C+0%2C+1%29&amp;nt_3_clr3=rgba%28255%2C+255%2C+255%2C+1%29&amp;nt_3_clr4=rgba%28255%2C+255%2C+255%2C+1%29&amp;nt_tts_voice_name=female&amp;nt_tts_voice_rate=1.2&amp;nt_tts_max_duration=0&amp;nt_tts_ignore_symbol=false&preview=true&static=true&"
+                  width="100%" height="240px"></iframe>
+                <div class="block block-warning col-sm-12 mt-10 fs-90 text-center"> Widget ini akan muncul ketika ada traktiran baru </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </article>
+    </div>
+    <div class="wrapper-spinner" style="visibility: hidden"></div>
+  </div>
+  <div class="modal modal-tts-settings "><input id="modal-tts-settings" class="toggle close-on-overlay" type="checkbox" autocomplete="off" />
+    <div class="overlay"></div>
+    <article class="x-center y-center " style=" width: 600px; ">
+      <header class="">
+        <h3>Text to Speech Settings</h3><label for="modal-tts-settings" class="close">&times;</label>
+      </header>
+      <section class="">
+        <div class="row block block-default pt-20 mr-10 ml-10 mt-10 mb-30 pr-10 pl-10">
+          <div class="col-xs-12 col-sm-6 pr-20 mb-20">
+            <div class="ml-5">Gender</div><select id="tts-settings-voices" class="full-width input p-10 mt-5">
+              <option value="female" selected>Female</option>
+              <option value="male">Male</option>
+            </select>
+          </div>
+          <div class="col-xs-12 col-sm-6 mb-20">
+            <div class="mb-5 ml-5">Speed</div><select id="tts-settings-rate" class="full-width input p-10">
+              <option value="0.8">Slow</option>
+              <option value="1">Normal</option>
+              <option value="1.2" selected>Fast</option>
+            </select><button id="tts-settings-test" class="btn btn-success btn-icon btn-pill btn-outline float-right mt-20"><i class="icon icon-media-play mr-5"></i> Tes Suara </button>
+          </div>
+        </div>
+        <div class="pl-10 pr-10 mb-30">
+          <div class="form-group row mb-10 ">
+            <div class="fs-90 mb-10 col-xs-12 col-sm-3 d-flex fx-ai-center "><label>Pengaturan Teks</label></div>
+            <div class="d-flex fx-ai-center col-xs-12 col-sm-9 ">
+              <div class="d-iflex fx-ai-center fx-wrap"><label class="switch mr-15 mb-10"><input id="tts-ignore-symbol" type="checkbox" />
+                  <div class="slider round"></div>
+                </label><span class="full-width-sm fs-80 mb-10"> Abaikan simbol <span style="display:inline-flex;height:17px;width:17px" class="hint--top hint--medium bd-999 bg-primary-light fs-80 ml-5 d-iflex fx-center border-box text-white"
+                    aria-label="Text to Speech hanya akan membacakan karakter Alphanumeric (Huruf A-Z dan Angka 0-9)">?</span></span></div>
+            </div>
+          </div>
+          <div class="form-group row ">
+            <div class="fs-90 mb-10 col-xs-12 col-sm-3 d-flex fx-ai-center "><label>Max. Durasi Pembacaan Teks</label></div>
+            <div class="d-flex fx-column col-xs-12 col-sm-9 ">
+              <div class="d-iflex fx-ai-center fx-wrap"><label class="switch mr-15 mb-10"><input id="tts-allow-max-duration" type="checkbox" checked />
+                  <div class="slider round"></div>
+                </label><span class="full-width-sm fs-80 mb-10"> Baca pesan dukungan sampai selesai </span></div>
+            </div>
+          </div>
+          <div class="form-group row ">
+            <div class="fs-90 col-xs-12 col-sm-3 d-flex fx-ai-center "><label></label></div>
+            <div class="d-flex fx-column col-xs-12 col-sm-9 ">
+              <div id="tts-max-duration-wrapper" class="input-group full-width mb-20 hide"><input id="tts-max-duration" type="number" class="input p-10 bd-25" min="10" max="3600" maxlength="4"
+                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                  onchange="javascript: if (Number(this.value) < Number(this.min)) this.value = this.min; if (Number(this.value) > Number(this.max)) this.value = this.max;" value="60" style="flex-grow: inherit; min-width: 100px;" />
+                <div class="append bg-default"> detik </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer><button id="apply-tts-settings" class="btn full-width"> Apply </button></footer>
+    </article>
+  </div>
+  <div class="modal modal-load-custom-theme "><input id="modal-load-custom-theme" class="toggle close-on-overlay" type="checkbox" autocomplete="off" />
+    <div class="overlay"></div>
+    <article class="x-center y-center " style=" width: 400px; ">
+      <header class="">
+        <h3>Load Custom Style</h3><label for="modal-load-custom-theme" class="close">&times;</label>
+      </header>
+      <section class="">
+        <div class="p-20"><select class="custom-themes input full-width"></select>
+          <div class="fs-90 mt-20">Preview:</div><iframe id="customized-widget" class="bg-white" width="360px" height="300px"></iframe>
+        </div>
+      </section>
+      <footer><button id="apply-custom-theme" class="btn btn-success full-width"> Apply </button></footer>
+    </article>
+  </div>
+  <script type="text/javascript" src="https://cdn.trakteer.id/js/lozad.min.js"></script>
+  <script src="/js/trakteer-admin.js?id=1e1d05521d627c931e80" type="text/javascript"></script>
+  <script src="/js/trakteer-stream.js?id=e7a21083aa2ad2f4bf11"></script>
+  <script src="https://cdn.trakteer.id/js/jquery.min.js"></script>
+  <script src="https://cdn.trakteer.id/js/clipboard.min.js"></script>
+  <script>
+    var clipboard = new ClipboardJS('.btn-copy');
+    clipboard.on('success', function(e) {
+      $(e.trigger).addClass('btn-active');
+      $(e.trigger).html('Copied');
+      setTimeout(function() {
+        $(e.trigger).removeClass('btn-active');
+        $(e.trigger).html('Copy Url');
+      }, 2000);
+    });
+  </script>
+  <script src="https://assets.trakteer.id/js/select2.full.min.js"></script>
+  <script src="https://assets.trakteer.id/js/webfont.js"></script>
+  <script>
+    (function($) {
+      $.fn.higooglefonts = function(options) {
+        var fonts = options.fonts || [];
+        var fontImports = '';
+        var fontMap = fontMap || [];
+        fonts.forEach(function(font, index) {
+          fontMap.push({
+            id: font,
+            text: font.trim(),
+            itemId: index
+          });
+          if (index > 0) {
+            fontImports += '|'
+          };
+          fontImports += font.replace(' ', '+');
+        });
+        this.select2({
+          placeholder: "Select Font",
+          data: [{
+            text: "Custom Font",
+            children: fontMap
+          }],
+          /* theme: "classic", */ triggerChange: true,
+          allowClear: false,
+          minimumResultsForSearch: Infinity,
+          containerCssClass: "select",
+          templateResult: function(result) {
+            var fontName = result.text.trim();
+            if (!fontName.includes('Searching')) {
+              if (result.id && result.id !== 'default') {
+                return $('<div style="font-family:' + fontName + '">' + fontName + '</div>');
+              } else {
+                return $('<div>' + fontName + '</div>');
+              }
+            }
+          }
+        });
+        var isFontStyleAdded = false;
+        this.on("select2:open", function(e) {
+          if (!isFontStyleAdded) {
+            $('head').prepend('<style>\ @import url("https://fonts.googleapis.com/css?family=' + fontImports + '");\ </style>');
+            isFontStyleAdded = true;
+          }
+        });
+        this.on("select2:select", function(e) {
+          if (typeof options.onSelect === 'function') {
+            options.onSelect(e);
+          }
+        }); /* Set empty initial value */
+        this.val(options.initialValue || 'default');
+        this.trigger('change');
+      };
+    }(jQuery));
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      /* Change header on scroll */
+      var $window = $(window);
+      var $footer = $('#footer-button');
+      $window.on('scroll', function() {
+        var scrollTop = $window.scrollTop(); /* Footer Button on Creators Page Mobile */
+        if ($footer && scrollTop > 300) {
+          $footer.fadeIn('fast');
+        } else {
+          $footer.fadeOut('fast');
+        }
+      }); /* Search Box */
+      var $searchInput = $('.search-box input');
+      $(document).on('change', '.search-toggle', function(e) {
+        if (e.target.checked) {
+          setTimeout(function() {
+            $searchInput.focus();
+          }, 100);
+        }
+      });
+      $(document).on('click', '#creator-menu-toggle', function() {
+        $(this).addClass('is-active');
+        $('#supporter-menu-toggle').removeClass('is-active');
+        $('#creator-menu').removeClass('hide');
+        $('#supporter-menu').addClass('hide');
+      });
+      $(document).on('click', '#supporter-menu-toggle', function() {
+        $(this).addClass('is-active');
+        $('#creator-menu-toggle').removeClass('is-active');
+        $('#creator-menu').addClass('hide');
+        $('#supporter-menu').removeClass('hide');
+      });
+    });
+  </script>
+  <script>
+    (function($) {
+      'use strict';
+      $.fn.scrollToSimple = function($target) {
+        var $container = this.first();
+        var pos = $target.position(),
+          height = $target.outerHeight();
+        var containerScrollTop = $container.scrollTop(),
+          containerHeight = $container.height();
+        var top = pos.top + containerScrollTop;
+        var paddingPx = containerHeight * 0.15;
+        if (top < containerScrollTop) {
+          $container.scrollTop(top - paddingPx);
+        } else if (top + height > containerScrollTop + containerHeight) {
+          $container.scrollTop(top + height - containerHeight + paddingPx);
+        }
+      };
+    })(jQuery);
+    $(document).ready(function() {
+      $("#sidebar").scrollToSimple($('#sidebar .menu .active'));
+    });
+  </script>
+  <script src="https://cdn.trakteer.id/js/awnotify.min.js"></script>
+  <script>
+    window.notifier = new AWN({
+      position: "bottom-right",
+      durations: {
+        global: 5000
+      },
+      icons: {
+        prefix: "<span class='icon icon-lg icon-",
+        suffix: "'></span>",
+        info: "info-large bg-secondary",
+        success: "tick bg-success",
+        warning: "warning bg-warning",
+        alert: "warning",
+        async: "cog-outline",
+        confirm: "warning"
+      }
+    });
+  </script>
+  <script>
+    var escapeHtml = function(text) {
+      return text.replace(/</g, "&lt;").replace(/>/g, "&gt;")
+    };
+  </script>
+  <script>
+    window.Echo.private('creators.mv7dk486wak5b690').notification(function(data) {
+      if (data.type === 'new-tip-success') {
+        var messageBody = 'Baru saja mentraktir kamu <span class="text-primary">' + data['quantity'] + ' ' + escapeHtml(data['unit']) + '</span> senilai <span class="text-primary">' + data['price'] + '</span>';
+        window.notifier.tip(messageBody, {
+          labels: {
+            tip: '<img src="' + data['supporter_avatar'] + '" width="30px" style="min-width: 30px" class="bd-999 img-fit mr-10" /> ' + escapeHtml(data['supporter_name'])
+          },
+          icons: {
+            prefix: "<img width='50px' src='" + data['unit_icon'] + "'",
+            suffix: "/>"
+          }
+        });
+        window.trakteer.notif.toggleNotificationBell('as-creator');
+      } else if (data.type === 'new-reacted-by') {
+        var messageBody = '';
+        if (data['reaction_type'] === 'follow') {
+          messageBody = 'Baru saja mengikuti halaman kreatormu';
+        } else if (data['reaction_type'] === 'like') {
+          messageBody = 'Menyukai postinganmu yang berjudul "<em>' + escapeHtml(data['reactable_title']) + '</em>"';
+        } else if (data['reaction_type'] === 'clap') {
+          messageBody = 'Menyukai karyamu yang berjudul "<em>' + escapeHtml(data['reactable_title']) + '</em>"';
+        } else if (data['reaction_type'] === 'like-comment') {
+          messageBody = 'Menyukai komentarmu "<em>' + escapeHtml(data['reactable_title']) + '</em>"';
+        }
+        window.notifier.tip(messageBody, {
+          labels: {
+            tip: '<img src="' + data['reacter_avatar'] + '" width="30px" style="min-width: 30px" class="bd-999 img-fit mr-10" /> ' + escapeHtml(data['reacter_name'])
+          }
+        });
+        window.trakteer.notif.toggleNotificationBell('as-creator');
+      } else if (data.type === 'new-comment-created') {
+        var messageBody = '';
+        if (data['commentable_type'] === 'post') {
+          messageBody = 'Membuat komentar pada postinganmu "<em>' + escapeHtml(data['comment']) + '</em>"';
+        } else if (data['commentable_type'] === 'content') {
+          messageBody = 'Membuat komentar pada karyamu "<em>' + escapeHtml(data['comment']) + '</em>"';
+        } else if (data['commentable_type'] === 'comment') {
+          messageBody = 'Membalas komentarmu "<em>' + escapeHtml(data['comment']) + '</em>"';
+        }
+        window.notifier.tip(messageBody, {
+          labels: {
+            tip: '<img src="' + data['commenter_avatar'] + '" width="30px" style="min-width: 30px" class="bd-999 img-fit mr-10" /> ' + escapeHtml(data['commenter_name'])
+          }
+        });
+        window.trakteer.notif.toggleNotificationBell('as-creator');
+      } else if (data.type === 'commission-updated') {
+        var messageBody = '';
+        if (data['update_type'] === 'requested') {
+          console.log('[request commission]');
+          messageBody = 'Melakukan pemesanan komisi "<em>' + escapeHtml(data['commission_title']) + ' - ' + escapeHtml(data['commission_package_title']) + ' </em>"';
+        } else if (data['update_type'] === 'inprogress') {
+          console.log('[start in progress]');
+          messageBody = 'Client telah membayar pesanan. In Progress: "<em> Commission' + escapeHtml(data['work_id']) + ' - ' + escapeHtml(data['commission_title']) + ' </em>"';
+        } else if (data['update_type'] === 'completed') {
+          console.log('[complete in progress]');
+          messageBody = 'Completed: "<em> Commission' + escapeHtml(data['work_id']) + ' - ' + escapeHtml(data['commission_title']) + ' </em>"';
+        } else if (data['update_type'] === 'revision') {
+          console.log('[complete in progress]');
+          messageBody = 'Client ask for revision on "<em> Commission' + escapeHtml(data['work_id']) + ' - ' + escapeHtml(data['commission_title']) + ' </em>"';
+        }
+        window.notifier.tip(messageBody, {
+          labels: {
+            tip: '<img src="' + data['client_avatar'] + '" width="30px" style="min-width: 30px" class="bd-999 img-fit mr-10" /> ' + escapeHtml(data['client_name'])
+          }
+        });
+        window.trakteer.notif.toggleNotificationBell('as-creator');
+      }
+    });
+    window.Echo.private('supporters.mv7dk486wak5b690').notification(function(data) {
+      if (data.type === 'new-tip-success') {
+        var messageBody = 'Traktiran kamu <span class="text-primary">' + data['quantity'] + ' ' + escapeHtml(data['unit']) + '</span> untuk <span class="text-primary">' + escapeHtml(data['creator_name']) + '</span> berhasil';
+        window.notifier.success(messageBody);
+        window.trakteer.notif.toggleNotificationBell('as-supporter');
+      } else if (data.type === 'new-tip-expired') {
+        var messageBody = 'Traktiran kamu <span class="text-primary">' + data['quantity'] + ' ' + escapeHtml(data['unit']) + '</span> untuk <span class="text-primary">' + escapeHtml(data['creator_name']) + '</span> gagal';
+        window.notifier.alert(messageBody);
+        window.trakteer.notif.toggleNotificationBell();
+      } else if (data.type === 'commission-updated') {
+        var messageBody = '';
+        if (data['update_type'] === 'approval') {
+          if (data['status'] === 'accepted') {
+            console.log('[approval accepted]');
+            messageBody = 'Pemesanan komisi disetujui: "<em> Commission' + escapeHtml(data['order_id']) + ' - ' + escapeHtml(data['commission_title']) + ' </em>"';
+          } else if (data['status'] === 'rejected') {
+            console.log('[approval rejected]');
+            messageBody = 'Pemesanan komisi ditolak: "<em> Commission ' + escapeHtml(data['order_id']) + ' - ' + escapeHtml(data['commission_title']) + ' </em>"';
+          }
+        } else if (data['update_type'] === 'payment') {
+          if (data['status'] === 'success') {
+            console.log('[payment success]');
+            messageBody = 'Pembayaran berhasil: "<em> Commission' + escapeHtml(data['order_id']) + ' - ' + escapeHtml(data['commission_title']) + ' </em>"';
+          } else if (data['status'] === 'failed') {
+            console.log('[payment failed]');
+            messageBody = 'Pembayaran gagal: "<em> Commission ' + escapeHtml(data['order_id']) + ' - ' + escapeHtml(data['commission_title']) + ' </em>"';
+          }
+        } else if (data['update_type'] === 'delivered') {
+          if (data['status'] === 'revision') {
+            console.log('[Deliver revision]');
+            messageBody = 'Hasil Revisi dikirim oleh creator: "<em> Commission' + escapeHtml(data['order_id']) + ' - ' + escapeHtml(data['commission_title']) + ' </em>"';
+          } else if (data['status'] === 'inprogress') {
+            console.log('[Deliver in progress]');
+            messageBody = 'Hasil Komisi dikirim oleh creator: "<em> Commission ' + escapeHtml(data['order_id']) + ' - ' + escapeHtml(data['commission_title']) + ' </em>"';
+          }
+        }
+        window.notifier.tip(messageBody, {
+          labels: {
+            tip: '<img src="' + data['creator_avatar'] + '" width="30px" style="min-width: 30px" class="bd-999 img-fit mr-10" /> ' + escapeHtml(data['creator_name'])
+          }
+        });
+        window.trakteer.notif.toggleNotificationBell('as-supporter');
+      }
+    });
+  </script>
+  <script src="https://trakteer.id/js/pickr.min.js"></script>
+  <script>
+    window.setProp(window.trakteer, 'stream-widget.toggleSubmit', function(containerId) {
+      $('#' + containerId + ' .widget-url').addClass('hide');
+      $('#' + containerId + ' .widget-generate').removeClass('hide');
+    });
+    window.setProp(window.trakteer, 'stream-widget.toggleExclusiveOptions', function(params) {
+      /* Hide exclusive options with other keys */
+      $('[data-exclusive-options]').each(function() {
+        var exclusives = $(this).attr('data-exclusive-options');
+        if (exclusives.includes(params['key'])) {
+          if (!exclusives.includes(params['key'] + ':' + params['value'])) {
+            $(this).addClass('hide');
+          }
+        }
+      }); /* Show exclusive options */
+      $('[data-exclusive-options]').each(function() {
+        var exclusives = $(this).attr('data-exclusive-options');
+        if (exclusives.includes(params['key'] + ':' + params['value'])) {
+          $(this).removeClass('hide');
+        }
+      });
+    });
+    window.setProp(window.trakteer, 'stream-widget.changeOption', function(params) {
+      var $preview = $('#' + params['id'] + ' .widget-preview');
+      if ($preview[0]) {
+        var href = new URL($preview.attr('src'));
+        if (params['keyValues']) {
+          for (var key in params['keyValues']) {
+            href.searchParams.set(key, params['keyValues'][key]);
+          }
+        } else {
+          href.searchParams.set(params['key'], params['value']);
+        }
+        $preview.attr('src', href.toString());
+        if (!params['ignoreSubmitButton']) {
+          window.runProp(window.trakteer, 'stream-widget.toggleSubmit', params['id']);
+        }
+      }
+    }); /* window.setProp(window.trakteer, 'stream-widget.removeOption', function(params) { var $preview = $('#' + params['id'] + ' .widget-preview'); if ($preview[0]) { var href = new URL($preview.attr('src')); if (params['keyValues']) { for (var key in params['keyValues']) { href.searchParams.delete(key); } } else { href.searchParams.delete(params['key']); } $preview.attr('src', href.toString()); if (!params['ignoreSubmitButton']) { window.runProp(window.trakteer, 'stream-widget.toggleSubmit', params['id']); } } } ); */
+    var $toggleCustomThemeLoader = $('#modal-load-custom-theme');
+    var $iframeCustomizedWidget = $('iframe#customized-widget');
+    var $customThemeSelection = $('.custom-themes');
+    var loadedType = false;
+    var loadedWidgetId = null;
+    var typeIds = {
+      'nt': 'new-tip-notification',
+      'ts': 'leaderboard',
+      't': 'target',
+      'rt': 'running-text'
+    };
+    window.setProp(window.trakteer, 'stream-widget.discoverThemes', function(params) {
+      var path = 'https://trakteer.github.io/custom-stream-widget/';
+      var type = params['type'];
+      var theme = params['theme'];
+      var availableThemes = [];
+      loadedType = type;
+      loadedWidgetId = typeIds[loadedType] || null;
+      if (theme && type && loadedWidgetId) {
+        $toggleCustomThemeLoader.trigger('click');
+        $.getJSON(path + loadedWidgetId + '/index.json', function(data) {
+          availableThemes = data[theme];
+          var options = '<option value="standard" selected>Standard</option>';
+          $.each(availableThemes, function(index) {
+            var label = availableThemes[index];
+            options += '<option value="' + label + '">' + label.charAt(0).toUpperCase() + label.slice(1) + '</option>';
+          });
+          $customThemeSelection.html(options);
+          var selectedTheme = $customThemeSelection.val();
+          window.runProp(window.trakteer, 'stream-widget.changeTheme', selectedTheme);
+        });
+      }
+    });
+    window.setProp(window.trakteer, 'stream-widget.changeTheme', function(theme) {
+      var $preview = $('#' + loadedWidgetId + ' .widget-preview');
+      src = $preview.attr('src');
+      if (src) {
+        src += '&disable_custom=true';
+        src += '&' + loadedType + '_custom=' + (theme === 'standard' ? '' : theme);
+        $iframeCustomizedWidget.attr('src', src);
+      }
+    });
+    window.setProp(window.trakteer, 'stream-widget.generateUrl', function(params) {
+      var $widgetUrl = $('#' + params['id'] + ' .widget-url');
+      var $widgetGenerate = $('#' + params['id'] + ' .widget-generate');
+      if (!params['href']) {
+        var $preview = $('#' + params['id'] + ' .widget-preview');
+        var href = new URL($preview.attr('src'));
+      } else {
+        var href = params['href'];
+      }
+      var allowedParams = window.prop(window.trakteer, 'stream-widget.' + params['id'] + '.allowed-params');
+      var data = {};
+      for (var pair of href.searchParams.entries()) {
+        if (allowedParams.includes(pair[0])) {
+          data[pair[0]] = pair[1];
+        }
+      }
+      $('#' + params['id']).addClass('is-loading');
+      $.ajax({
+        url: 'https://api.trakteer.id/v1/settings/update-stream-setting',
+        method: 'POST',
+        data: {
+          settings: data,
+          creator_id: 'jl0865yalez5bgme',
+          type: params['type']
+        },
+        dataType: 'json',
+        headers: {
+          'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImE1Y2VmN2Q1MWJiNWE1MTg5NDYxYjMwMmI0YjNjZTc5YTcyMDU0Nzk1NzVmMDE5MWI2NWM3NmM2MzdjZGE3Njk1YjM4OWQ1ZDE5YjhkZDFlIn0.eyJhdWQiOiIxIiwianRpIjoiYTVjZWY3ZDUxYmI1YTUxODk0NjFiMzAyYjRiM2NlNzlhNzIwNTQ3OTU3NWYwMTkxYjY1Yzc2YzYzN2NkYTc2OTViMzg5ZDVkMTliOGRkMWUiLCJpYXQiOjE2NjAyNzI0NjYsIm5iZiI6MTY2MDI3MjQ2NiwiZXhwIjoxNjg2NDEyMjgzLCJzdWIiOiIyODk3NzQiLCJzY29wZXMiOltdfQ.oxwSE76inm7FU2IwRifBDXGim1Wgpo9Z9FyYgIKKSBNl2mpUMe-OT1-n4tgS4M8I51FEo9DJ1BlyqN-8C795aUHY2p6hdsccepLtAnfC8_vP51OGK49EKv-qu0Z7uGYp0k_gVbmHILsQdyRq7DWGurs5HK3xk6jYrMOmudsiFAqIkTT-d-XGWfsHFEl-QWXC9q5OeYOpGlq12dXA32h18P8iG_mzxi22EI5Noz-iOSBv6pVK9Ch5NkDRCX8EvEoNDBRdoiy-IWFB2FYLTPeYZJIr_z4qm_d5qXiGbdA2EmwD1WTdsKoBOLVobFyzy68h_VPlHwchZc4TgHKgwyse0T2cDu2e8KkpP-mm-LyhZ3faQx7vOA-6NZTjc2VBD_G-TYqbias13wH4OCePlw2_eoPwJqeqaqachoxhPvCz68aksWuCzNX2fmuLZ0ZweyJi-FnaPYcIcX8n8bdbPpxJ-3VMJ3O6fe0Blksmf1ivuzxd7AWK3_pcednlzqH1VwsLTDzSlz6DCbjXzEB2L7ywT8da0D28q862smQ9EyDwAisGLxItJ6pxSr4OhndYFJtijsa0JixY56CwvTAX5z4pl3j4pa0oai0d65X8EEOu762GqdbmFx49Vhuay3ABwLkZvxTb0uKVH17nZFzXz-Q7og34cOXslcthVHT1Yx5_W78'
+        },
+        xhrFields: {
+          withCredentials: true
+        },
+        success: function(response) {
+          var streamUrl = window.prop(response, 'data.url');
+          window.notifier.success('Stream URL baru telah digenerate');
+          $widgetUrl.removeClass('hide').removeClass('block-secondary').addClass('block-success').removeClass('border-1-secondary').addClass('border-1-success');
+          $widgetUrl.find('input').val(streamUrl);
+          $widgetUrl.find('.btn-copy').attr('data-clipboard-text', streamUrl);
+          $widgetUrl.find('.btn-open-url').attr('href', streamUrl);
+          $widgetGenerate.addClass('hide');
+        },
+        error: function(response) {
+          window.notifier.alert(window.prop(response, 'responseJSON.errors.settings.0') || 'Terjadi Kesalahan');
+        },
+        complete: function() {
+          $('#' + params['id']).removeClass('is-loading');
+        }
+      });
+    });
+  </script>
+  <script>
+    $(document).on('click', '#apply-custom-theme', function(e) {
+      var href = new URL($iframeCustomizedWidget.attr('src'));
+      href.searchParams.delete('disable_custom');
+      var $preview = $('#' + loadedWidgetId + ' .widget-preview');
+      $preview.attr('src', href.toString());
+      $toggleCustomThemeLoader.trigger('click');
+      window.runProp(window.trakteer, 'stream-widget.generateUrl', {
+        id: loadedWidgetId,
+        type: loadedType,
+        href: href
+      });
+    });
+    $(document).on('change', '.custom-themes', function(e) {
+      window.runProp(window.trakteer, 'stream-widget.changeTheme', e.target.value);
+    });
+
+    function loadCustomTheme(e) {
+      window.runProp(window.trakteer, 'stream-widget.discoverThemes', {
+        type: window.prop(e.detail, 'type') || null,
+        theme: window.prop(e.detail, 'theme') || null
+      });
+    };
+    window.document.addEventListener('load:stream-widget:custom-theme', loadCustomTheme, false);
+  </script>
+  <script src="https://cdn.trakteer.id/js/jsrender.min.js"></script>
+  <script type="text/javascript">
+    $.views.settings.delimiters("<%", "%>");
+  </script>
+  <script id="search-item-template" type="text/x-jsrender">
+    <%for creators%><div class="hvr-pointer m-5" title="<%:page%>" onclick="window.location.href='https://trakteer.id/<%:page%>'"><div class="image"><img class="img-fit bd-999 lozad" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMsj46uBwAELAGu61B4eQAAAABJRU5ErkJggg==" data-src="<%:image%>" width="40px" height="40px"/></div></div><%else%><div class="text-center text-black fw-100 fs-80 op-70"><em>Kamu belum mendukung atau mengikuti kreator manapun</em></div><%/for%>
+  </script>
+  <script>
+    $(function() {
+      var isFetching = false;
+      var loaded = [false, false];
+      var isLoaded = function(isMobileMode) {
+        return isMobileMode ? loaded[0] : loaded[1];
+      };
+      var searchItemTemplate = $.templates("#search-item-template");
+      var loadRecentActivities = function(isMobileMode = false) {
+        if (isFetching || isLoaded(isMobileMode)) {
+          return;
+        } else {
+          isFetching = true;
+        }
+        var navClass = isMobileMode ? '.nav-search--mobile' : '.nav-search';
+        var $searchBox = $(navClass + ' .search-box');
+        var $creatorsList = $(navClass + ' .recent-activities');
+        $searchBox.addClass('loading');
+        $.ajax({
+          url: 'https://api.trakteer.id/v1/user/recent-activities',
+          method: 'POST',
+          data: {
+            id: 'mv7dk486wak5b690'
+          },
+          dataType: 'json',
+          headers: {
+            'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImE1Y2VmN2Q1MWJiNWE1MTg5NDYxYjMwMmI0YjNjZTc5YTcyMDU0Nzk1NzVmMDE5MWI2NWM3NmM2MzdjZGE3Njk1YjM4OWQ1ZDE5YjhkZDFlIn0.eyJhdWQiOiIxIiwianRpIjoiYTVjZWY3ZDUxYmI1YTUxODk0NjFiMzAyYjRiM2NlNzlhNzIwNTQ3OTU3NWYwMTkxYjY1Yzc2YzYzN2NkYTc2OTViMzg5ZDVkMTliOGRkMWUiLCJpYXQiOjE2NjAyNzI0NjYsIm5iZiI6MTY2MDI3MjQ2NiwiZXhwIjoxNjg2NDEyMjgzLCJzdWIiOiIyODk3NzQiLCJzY29wZXMiOltdfQ.oxwSE76inm7FU2IwRifBDXGim1Wgpo9Z9FyYgIKKSBNl2mpUMe-OT1-n4tgS4M8I51FEo9DJ1BlyqN-8C795aUHY2p6hdsccepLtAnfC8_vP51OGK49EKv-qu0Z7uGYp0k_gVbmHILsQdyRq7DWGurs5HK3xk6jYrMOmudsiFAqIkTT-d-XGWfsHFEl-QWXC9q5OeYOpGlq12dXA32h18P8iG_mzxi22EI5Noz-iOSBv6pVK9Ch5NkDRCX8EvEoNDBRdoiy-IWFB2FYLTPeYZJIr_z4qm_d5qXiGbdA2EmwD1WTdsKoBOLVobFyzy68h_VPlHwchZc4TgHKgwyse0T2cDu2e8KkpP-mm-LyhZ3faQx7vOA-6NZTjc2VBD_G-TYqbias13wH4OCePlw2_eoPwJqeqaqachoxhPvCz68aksWuCzNX2fmuLZ0ZweyJi-FnaPYcIcX8n8bdbPpxJ-3VMJ3O6fe0Blksmf1ivuzxd7AWK3_pcednlzqH1VwsLTDzSlz6DCbjXzEB2L7ywT8da0D28q862smQ9EyDwAisGLxItJ6pxSr4OhndYFJtijsa0JixY56CwvTAX5z4pl3j4pa0oai0d65X8EEOu762GqdbmFx49Vhuay3ABwLkZvxTb0uKVH17nZFzXz-Q7og34cOXslcthVHT1Yx5_W78'
+          },
+          xhrFields: {
+            withCredentials: true
+          },
+          cache: false,
+          success: function(result) {
+            $creatorsList.html(searchItemTemplate.render({
+              creators: result.data
+            }));
+            loaded[isMobileMode ? 0 : 1] = true;
+            window.imageObserver.observe();
+          },
+          error: function() {
+            alert('Terjadi Kesalahan');
+          },
+          complete: function(result) {
+            isFetching = false;
+            $searchBox.removeClass('loading');
+          }
+        });
+      };
+      window.loadRecentActivities = loadRecentActivities;
+    });
+  </script>
+  <script>
+    $(function() {
+      $(document).on('focusout', '.search-input', function(e) {
+        var $input = $(this);
+        setTimeout(function() {
+          $input.closest('a').removeClass('is-focused');
+        }, 200);
+      });
+      $(document).on('keyup', '.search-input', function(e) {
+        if (e.key === 'Enter' || e.keyCode === 13) {
+          window.location.href = "https://trakteer.id/search?keywords=" + e.target.value;
+        }
+      });
+    });
+  </script>
+  <script>
+    $(function() {
+      var isMobileMode = true;
+      var navClass = isMobileMode ? '.nav-search--mobile' : '.nav-search';
+      $(document).on('focusin', navClass + ' .search-input', function(e) {
+        $(this).closest('a').addClass('is-focused');
+        window.loadRecentActivities && window.loadRecentActivities(isMobileMode);
+      });
+    });
+  </script>
+  <script src="https://cdn.trakteer.id/js/jquery.inview.min.js"></script>
+  <script id="notification-item-template" type="text/x-jsrender">
+    <a href="<%:data['action_url']%>" class="notification-item border-none <%if read_at == null%> is-unread <%/if%>" onclick="window.closeNotificationToggle && window.closeNotificationToggle()"><%if type === 'App\Containers\Tip\Notifications\NewTipSuccess'%><%if data['for'] === 'creator'%><div class="image"><img class="img-fit" src="<%:data['supporter_image']%>" width="40px" height="40px"></div><div class="content"><div class="caption"><span class="text-primary"><%html:data['supporter_name']%></span> mentraktir kamu <span class="text-primary"><%:data['quantity']%>&nbsp;<%html:data['unit_name']%></span> senilai <span class="text-primary"><%:data['price']%></span></div><%if data['support_message']%><span class="text-warning-dark fs-80"> "<%html:data['support_message']%>" </span><%/if%><div class="date"><%:readable_created_at%></div></div><%else%><div class="image"><img class="img-fit" src="<%:data['creator_image']%>" width="40px" height="40px"></div><div class="content"><div class="caption"> Traktiran kamu <span class="text-primary"><%:data['quantity']%>&nbsp;<%html:data['unit_name']%></span> untuk <span class="text-primary"><%html:data['creator_name']%></span> telah berhasil </div><%if data['support_message']%><span class="text-warning-dark fs-80"> "<%html:data['support_message']%>" </span><%/if%><div class="date"><%:readable_created_at%></div></div><%/if%><%else type === 'App\Containers\Tip\Notifications\TipRepliedByCreator'%><div class="image"><img class="img-fit" src="<%:data['creator_image']%>" width="40px" height="40px"></div><div class="content"><div class="caption"><span class="text-primary"><%html:data['creator_name']%></span><%if reply_action === 'update'%> mengupdate balasan untuk <%else%> membalas <%/if%> pesan dukungan kamu </div><span class="text-warning-dark fs-80"> "<%html:data['reply_message']%>" </span><div class="date"><%:readable_created_at%></div></div><%else type === 'App\Containers\Tip\Notifications\TipAlmostRunOut'%><div class="image"><img class="img-fit" src="https://cdn.trakteer.id/images/mix/trakteer-icon.png" width="40px" height="40px"></div><div class="content"><div class="caption"><span class="text-secondary">[Pengingat]</span> Traktiran kamu <span class="text-primary"><%:data['quantity']%>&nbsp;<%html:data['unit_name']%></span> untuk <span class="text-primary"><%html:data['creator_name']%></span> akan habis dalam <%:data['runout_at']%> hari </div><div class="date"><%:readable_created_at%></div></div><%else type === 'App\Containers\Reaction\Notifications\NewReactedBy'%><div class="image"><img class="img-fit" src="<%:data['reacter_avatar']%>" width="40px" height="40px"></div><div class="content"><div class="caption"><span class="text-primary"><%html:data['reacter_name']%></span><%if data['reaction_type'] === 'follow'%> baru saja mengikuti halaman kreatormu <%else data['reaction_type'] === 'like'%> menyukai postinganmu yang berjudul <%else data['reaction_type'] === 'clap'%> menyukai karyamu yang berjudul <%else data['reaction_type'] === 'like-comment'%> menyukai komentarmu <%/if%></div><%if data['reaction_type'] === 'like' || data['reaction_type'] === 'like-comment' || data['reaction_type'] === 'clap'%><span class="text-warning-dark fs-80"> "<%html:data['reactable_title']%>" </span><%/if%><div class="date"><%:readable_created_at%></div></div><%else type === 'App\Containers\Comment\Notifications\NewCommentCreated'%><div class="image"><img class="img-fit" src="<%:data['commenter_avatar']%>" width="40px" height="40px"></div><div class="content"><div class="caption"><span class="text-primary"><%html:data['commenter_name']%></span><%if data['commentable_type'] === 'post'%> membuat komentar pada postinganmu <%else data['commentable_type'] === 'content'%> membuat komentar pada karyamu <%else data['commentable_type'] === 'comment'%> membalas komentarmu <%/if%></div><span class="text-warning-dark fs-80"> "<%html:data['comment']%>" </span><div class="date"><%:readable_created_at%></div></div><%else type === 'App\Containers\Withdrawal\Notifications\YourNewWithdrawalRequested'%><div class="image"><img class="img-fit" src="https://cdn.trakteer.id/images/mix/trakteer-icon.png" width="40px" height="40px"></div><div class="content"><div class="caption"> Permintaan penarikan saldo kamu sebesar <span class="text-primary"><%:data['fee']%></span></div><span class="text-secondary fs-80"> Sedang Diproses </span><div class="date"><%:readable_created_at%></div></div><%else type === 'App\Containers\Withdrawal\Notifications\YourWithdrawalRequestUpdated'%><div class="image"><img class="img-fit" src="https://cdn.trakteer.id/images/mix/trakteer-icon.png" width="40px" height="40px"></div><div class="content"><div class="caption"> Permintaan penarikan saldo Trakteer kamu </div><%if data['status'] === 'failed'%><span class="text-primary fs-80"> Ditolak / Rejected </span><div class="fs-80 mt-5"><span class="text-black fw-400">Message: </span><span class="text-warning-dark"> "<%html:data['message']%>" </span></div><%else data['status'] === 'success'%><span class="text-success fs-80"> Diterima / Approved </span><%/if%><div class="date"><%:readable_created_at%></div></div><%else type === 'App\Containers\BankDetail\Notifications\YourNewBankDetailRequested'%><div class="image"><img class="img-fit" src="https://cdn.trakteer.id/images/mix/trakteer-icon.png" width="40px" height="40px"></div><div class="content"><div class="caption"> Permintaan update data akun bank pencairan kamu </div><span class="text-secondary fs-80"> Sedang Diproses </span><div class="date"><%:readable_created_at%></div></div><%else type === 'App\Containers\BankDetail\Notifications\YourBankDetailRequestUpdated'%><div class="image"><img class="img-fit" src="https://cdn.trakteer.id/images/mix/trakteer-icon.png" width="40px" height="40px"></div><div class="content"><div class="caption"> Permintaan update data akun bank pencairan kamu </div><%if data['status'] === 'rejected'%><span class="text-primary fs-80"> Ditolak / Rejected </span><div class="fs-80 mt-5"><span class="text-black fw-400">Message: </span><span class="text-warning-dark"> "<%html:data['rejection_message']%>" </span></div><%else data['status'] === 'approved'%><span class="text-success fs-80"> Diterima / Approved </span><%/if%><div class="date"><%:readable_created_at%></div></div><%else type === 'App\Containers\Content\Notifications\NewContentPublished'%><div class="image"><img class="img-fit" src="<%:data['avatar']%>" width="40px" height="40px"></div><div class="content"><div class="caption"><span class="text-primary"><%html:data['name']%></span> baru saja menerbitkan karya, </div><span class="text-warning-dark fs-80"> "<%html:data['title']%>" </span><div class="date"><%:readable_created_at%></div></div><%else type === 'App\Containers\Post\Notifications\NewPostCreated'%><div class="image"><img class="img-fit" src="<%:data['avatar']%>" width="40px" height="40px"></div><div class="content"><div class="caption"><span class="text-primary"><%html:data['name']%></span> baru saja membuat post, </div><span class="text-warning-dark fs-80"> "<%html:data['title']%>" </span><div class="date"><%:readable_created_at%></div></div><%else type === 'App\Containers\Creator\Notifications\YourAccountHasBeenSuspended'%><div class="image"><img class="img-fit" src="https://cdn.trakteer.id/images/mix/trakteer-icon.png" width="40px" height="40px"></div><div class="content"><div class="caption"> Akun kreator kamu <span class="text-primary">telah dibekukan</span></div><span class="text-warning-dark fs-80"> "<%html:data['description']%>" </span><div class="date"><%:readable_created_at%></div></div><%else type === 'App\Containers\Creator\Notifications\YourAccountSuspensionHasBeenLifted'%><div class="image"><img class="img-fit" src="https://cdn.trakteer.id/images/mix/trakteer-icon.png" width="40px" height="40px"></div><div class="content"><div class="caption"> Akun kreator kamu <span class="text-primary">telah aktif kembali</span></div><div class="date"><%:readable_created_at%></div></div><%else type === 'App\Containers\Creator\Notifications\YourBalanceHasBeenFrozen'%><div class="image"><img class="img-fit" src="https://cdn.trakteer.id/images/mix/trakteer-icon.png" width="40px" height="40px"></div><div class="content"><div class="caption"> Saldo Trakteer kamu <span class="text-primary">telah dibekukan</span></div><span class="text-warning-dark fs-80"> "<%html:data['description']%>" </span><div class="date"><%:readable_created_at%></div></div><%else type === 'App\Containers\Creator\Notifications\YourBalanceIsNotFrozenAnymore'%><div class="image"><img class="img-fit" src="https://cdn.trakteer.id/images/mix/trakteer-icon.png" width="40px" height="40px"></div><div class="content"><div class="caption"> Saldo Trakteer kamu <span class="text-primary">telah aktif kembali</span></div><div class="date"><%:readable_created_at%></div></div><%else type === 'App\Containers\Creator\Notifications\YourAccountHasBeenMarkedUnderReview'%><div class="image"><img class="img-fit" src="https://cdn.trakteer.id/images/mix/trakteer-icon.png" width="40px" height="40px"></div><div class="content"><div class="caption"> Akun kreator kamu <span class="text-primary">berada dalam masa review</span></div><span class="text-warning-dark fs-80"> Selama masa review, halaman kreator kamu tidak dapat menerima dukungan </span><div class="date"><%:readable_created_at%></div></div><%else type === 'App\Containers\Creator\Notifications\YourAccountHasBeenReviewed'%><div class="image"><img class="img-fit" src="https://cdn.trakteer.id/images/mix/trakteer-icon.png" width="40px" height="40px"></div><div class="content"><div class="caption"> Akun kreator kamu <span class="text-success">telah lolos masa review</span></div><span class="text-warning-dark fs-80"> Kamu bisa mengakses kembali fitur-fitur yang telah dibatasi sebelumnya </span><div class="date"><%:readable_created_at%></div></div><%else type === 'App\Containers\Content\Notifications\YourContentHasBeenBlocked'%><div class="image"><img class="img-fit" src="https://cdn.trakteer.id/images/mix/trakteer-icon.png" width="40px" height="40px"></div><div class="content"><div class="caption"> Trakteer <span class="text-primary">telah memblokir</span> konten kamu yang berjudul </div><span class="text-warning-dark fs-80"> "<%html:data['title']%>" </span><div class="date"><%:readable_created_at%></div></div><%else type === 'App\Containers\Post\Notifications\YourPostHasBeenRemoved'%><div class="image"><img class="img-fit" src="https://cdn.trakteer.id/images/mix/trakteer-icon.png" width="40px" height="40px"></div><div class="content"><div class="caption"> Trakteer <span class="text-primary">telah menghapus</span> postingan kamu yang berjudul </div><span class="text-warning-dark fs-80"> "<%html:data['title']%>" </span><div class="date"><%:readable_created_at%></div></div><%else type === 'App\Containers\Creator\Notifications\YourAccountCanAccessInstantWithdrawal'%><div class="image"><img class="img-fit" src="https://cdn.trakteer.id/images/mix/trakteer-icon.png" width="40px" height="40px"></div><div class="content"><div class="caption"> Fitur [<em>Instant Withdrawal</em>] kamu </div><span class="text-secondary fs-80"> Telah Dibuka </span><div class="date"><%:readable_created_at%></div></div><%else type === 'App\Containers\Creator\Notifications\YourAccountCanUseWebhookDiscord'%><div class="image"><img class="img-fit" src="https://cdn.trakteer.id/images/mix/trakteer-icon.png" width="40px" height="40px"></div><div class="content"><div class="caption"> Fitur [<em>Discord Webhook</em>] kamu <span class="text-success"> telah dibuka </span></div><div class="date"><%:readable_created_at%></div></div><%else type === 'App\Containers\Creator\Notifications\YourAccountCantUseWebhookDiscord'%><div class="image"><img class="img-fit" src="https://cdn.trakteer.id/images/mix/trakteer-icon.png" width="40px" height="40px"></div><div class="content"><div class="caption"> Maaf, permintaan aktivasi [<em>Discord Webhook</em>] kamu <span class="text-primary-dark"> ditolak </span></div><div class="date"><%:readable_created_at%></div></div><%else type === 'App\Containers\Creator\Notifications\DiscordWebhookAutomateShutdown'%><div class="image"><img class="img-fit" src="https://cdn.trakteer.id/images/mix/trakteer-icon.png" width="40px" height="40px"></div><div class="content"><div class="caption"> Notifikasi ke channel Discord kamu <span class="text-primary-dark"> dinonaktifkan </span> otomatis oleh sistem. Pastikan webhook sudah benar. </div><div class="date"><%:readable_created_at%></div></div><%else type === 'App\Containers\Commission\Notifications\CommissionRequested'%><div class="image"><img class="img-fit" src="<%:data['client_avatar']%>" width="40px" height="40px"></div><div class="content"><div class="caption"><span class="text-primary"><%html:data['client']%></span> melakukan pemesanan komisi </div><span class="text-secondary fs-80"><%:data['commission']%> - <%:data['commission_package']%></span><div class="date"><%:readable_created_at%></div></div><%else type === 'App\Containers\Commission\Notifications\CommissionApproval'%><div class="image"><img class="img-fit" src="<%:data['client_avatar']%>" width="40px" height="40px"></div><div class="content"><div class="caption"><%if data['status'] == 'accepted' %> Pemesanan Commission <%:data['order_id']%> disetujui. Silahkan melakukan pembayaran terlebih dahulu <%else data['status'] == 'rejected' %> Pemesanan Commission <%:data['order_id']%> ditolak <%/if%></div><span class="text-secondary fs-80"><%:data['commission']%> - <%:data['commission_package']%></span><div class="date"><%:readable_created_at%></div></div><%else type === 'App\Containers\Commission\Notifications\CommissionPaymentStatus'%><div class="image"><img class="img-fit" src="<%:data['creator_avatar']%>" width="40px" height="40px"></div><div class="content"><div class="caption"><%if data['status'] == 'success' %> Pembayaran berhasil pada <span class="text-primary"> Commission <%:data['order_id']%></span><%else data['status'] == 'failed' %> Pembayaran gagal pada <span class="text-primary"> Commission <%:data['order_id']%></span><%/if%></div><div class="date"><%:readable_created_at%></div></div><%else type === 'App\Containers\Commission\Notifications\CommissionPaymentFailed'%><div class="image"><img class="img-fit" src="<%:data['creator_avatar']%>" width="40px" height="40px"></div><div class="content"><div class="caption"> Pembayaran gagal pada <span class="text-primary"> Commission <%:data['order_id']%></span></div><div class="date"><%:readable_created_at%></div></div><%else type === 'App\Containers\Commission\Notifications\CommissionInProgress'%><div class="image"><img class="img-fit" src="<%:data['client_avatar']%>" width="40px" height="40px"></div><div class="content"><div class="caption"> Pembayaran telah dilakukan oleh client. Kamu dapat mulai mengerjakan <%:data['work_id']%>. </div><div class="date"><%:readable_created_at%></div></div><%else type === 'App\Containers\Commission\Notifications\CommissionDelivered'%><div class="image"><img class="img-fit" src="<%:data['avatar']%>" width="40px" height="40px"></div><div class="content"><div class="caption"><%if data['status'] == 'inprogress' %> Hasil Commission <%:data['order_id']%> yang kamu pesan telah dikirim oleh creator <%else data['status'] == 'revision' %> Hasil Revisi Commission <%:data['order_id']%> yang kamu minta telah dikirim oleh creator <%/if%></div><div class="date"><%:readable_created_at%></div></div><%else type === 'App\Containers\Commission\Notifications\CommissionRevision'%><div class="image"><img class="img-fit" src="<%:data['client_avatar']%>" width="40px" height="40px"></div><div class="content"><div class="caption"> Permintaan Revisi: Commission <%:data['work_id']%></div><div class="date"><%:readable_created_at%></div></div><%else type === 'App\Containers\Commission\Notifications\CommissionCompleted'%><div class="image"><img class="img-fit" src="<%:data['client_avatar']%>" width="40px" height="40px"></div><div class="content"><div class="caption"> Client menyetujui hasil Commission <%:data['work_id']%>. Proses telah selesai. </div><div class="date"><%:readable_created_at%></div></div><%/if%></a>
+  </script>
+  <script>
+    $(function() {
+      /* var isMobileMode = true; var navClass = isMobileMode ? '.nav-notif--mobile' : '.nav-notif'; */
+      var isInitializing = {
+        'system': false,
+        'as-creator': false,
+        'as-supporter': false
+      };
+      var isFetching = false;
+      var isLoadingMore = false;
+      var isLoadingMarksAllRead = false;
+      var activeNotificationTab = 'system';
+      var $notificationBox = $('.notification-box');
+      var newestNotificationId = {
+        'system': "4c932265-0cc5-466c-8893-d011b5b69290",
+        'as-creator': "8a788bb9-fdd0-4341-bf12-c12c8dcc53a6",
+        'as-supporter': "2a645931-0818-4f1f-af83-03b0455fddf5"
+      };
+      var lastNotificationId = {
+        'system': newestNotificationId['system'],
+        'as-creator': newestNotificationId['as-creator'],
+        'as-supporter': newestNotificationId['as-supporter']
+      };
+      var getIsInitializing = function() {
+        return isInitializing[activeNotificationTab];
+      };
+      var setIsInitializing = function(params) {
+        isInitializing[activeNotificationTab] = params;
+      };
+      var getLastNotificationId = function() {
+        return lastNotificationId[activeNotificationTab];
+      };
+      var setLastNotificationId = function(params) {
+        lastNotificationId[activeNotificationTab] = params;
+      };
+      var getNotificationListEl = function() {
+        return $('.' + activeNotificationTab + '-notification');
+      };
+      var getNotificationContentEl = function() {
+        return $('.' + activeNotificationTab + '-notification .notification-content');
+      };
+      var getNotificationLoadmoreEl = function() {
+        return $('.' + activeNotificationTab + '-notification .notification-loadmore');
+      };
+      var notificationItemTemplate = $.templates("#notification-item-template");
+      var loadNotification = function(params) {
+        isFetching = true;
+        $notificationBox.addClass('loading');
+        $.ajax({
+          url: 'https://api.trakteer.id/v1/user/notifications',
+          method: 'POST',
+          data: Object.assign(params['extraParams'] || {}, {
+            id: 'mv7dk486wak5b690',
+            page: prop(window.trakteer, 'notif.page.' + activeNotificationTab),
+            mark_as_read_as_fetching: 1,
+            group: activeNotificationTab === 'as-creator' ? 1 : (activeNotificationTab === 'as-supporter' ? 2 : 0)
+          }),
+          dataType: 'json',
+          headers: {
+            'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImE1Y2VmN2Q1MWJiNWE1MTg5NDYxYjMwMmI0YjNjZTc5YTcyMDU0Nzk1NzVmMDE5MWI2NWM3NmM2MzdjZGE3Njk1YjM4OWQ1ZDE5YjhkZDFlIn0.eyJhdWQiOiIxIiwianRpIjoiYTVjZWY3ZDUxYmI1YTUxODk0NjFiMzAyYjRiM2NlNzlhNzIwNTQ3OTU3NWYwMTkxYjY1Yzc2YzYzN2NkYTc2OTViMzg5ZDVkMTliOGRkMWUiLCJpYXQiOjE2NjAyNzI0NjYsIm5iZiI6MTY2MDI3MjQ2NiwiZXhwIjoxNjg2NDEyMjgzLCJzdWIiOiIyODk3NzQiLCJzY29wZXMiOltdfQ.oxwSE76inm7FU2IwRifBDXGim1Wgpo9Z9FyYgIKKSBNl2mpUMe-OT1-n4tgS4M8I51FEo9DJ1BlyqN-8C795aUHY2p6hdsccepLtAnfC8_vP51OGK49EKv-qu0Z7uGYp0k_gVbmHILsQdyRq7DWGurs5HK3xk6jYrMOmudsiFAqIkTT-d-XGWfsHFEl-QWXC9q5OeYOpGlq12dXA32h18P8iG_mzxi22EI5Noz-iOSBv6pVK9Ch5NkDRCX8EvEoNDBRdoiy-IWFB2FYLTPeYZJIr_z4qm_d5qXiGbdA2EmwD1WTdsKoBOLVobFyzy68h_VPlHwchZc4TgHKgwyse0T2cDu2e8KkpP-mm-LyhZ3faQx7vOA-6NZTjc2VBD_G-TYqbias13wH4OCePlw2_eoPwJqeqaqachoxhPvCz68aksWuCzNX2fmuLZ0ZweyJi-FnaPYcIcX8n8bdbPpxJ-3VMJ3O6fe0Blksmf1ivuzxd7AWK3_pcednlzqH1VwsLTDzSlz6DCbjXzEB2L7ywT8da0D28q862smQ9EyDwAisGLxItJ6pxSr4OhndYFJtijsa0JixY56CwvTAX5z4pl3j4pa0oai0d65X8EEOu762GqdbmFx49Vhuay3ABwLkZvxTb0uKVH17nZFzXz-Q7og34cOXslcthVHT1Yx5_W78'
+          },
+          xhrFields: {
+            withCredentials: true
+          },
+          cache: false,
+          success: function(result) {
+            /* Callback */
+            params.onSuccess && params.onSuccess(result);
+          },
+          error: function() {
+            alert('Terjadi Kesalahan');
+          },
+          complete: function(result) {
+            $notificationBox.removeClass('loading'); /* Callback */
+            params.onComplete && params.onComplete(result);
+            isFetching = false;
+          }
+        });
+      };
+      var appendNotificationItem = function(result) {
+        var items = prop(result, 'data');
+        items.forEach(function(item, index) {
+          $(notificationItemTemplate.render(item)).insertBefore(getNotificationContentEl());
+        });
+      };
+      var prependNotificationItem = function(result) {
+        var items = prop(result, 'data');
+        items.forEach(function(item, index) {
+          getNotificationListEl().prepend(notificationItemTemplate.render(item));
+        });
+      };
+      var toggleNotification = function() {
+        /* Remove has-unread indicator on child tab */
+        $('.notification-tabs div[data-tab-id="' + activeNotificationTab + '"] .has-unread-tab').addClass('hide'); /* Is Initialized */
+        if (!prop(window.trakteer, 'notif.is-initialized.' + activeNotificationTab) && !getIsInitializing()) {
+          setIsInitializing(true);
+          loadNotification({
+            extraParams: {
+              last_id: newestNotificationId[activeNotificationTab]
+            },
+            onSuccess: function(result) {
+              appendNotificationItem(result);
+              var meta = prop(result, 'meta');
+              if (prop(meta, 'pagination.current_page') >= prop(meta, 'pagination.total_pages')) {
+                getNotificationLoadmoreEl().hide();
+              }
+              window.trakteer.notif.initialized(activeNotificationTab);
+              window.trakteer.notif.page[activeNotificationTab]++;
+              setIsInitializing(false);
+            }
+          });
+        } /* Has Unfetched */
+        if (prop(window.trakteer, 'notif.has-unfetched.' + activeNotificationTab) && !isFetching) {
+          loadNotification({
+            extraParams: {
+              fetch_newest: 1,
+              last_id: getLastNotificationId()
+            },
+            onSuccess: function(result) {
+              prependNotificationItem(result);
+              var items = prop(result, 'data');
+              if (items && items.length > 0) {
+                setLastNotificationId(prop(items[0], 'id'));
+              }
+              window.trakteer.notif['has-unfetched'][activeNotificationTab] = false;
+            }
+          })
+        }
+      };
+      $(document).on('change', '.notification-toggle', function(e) {
+        var $input = $(this);
+        if (e.target.checked) {
+          /* Remove unread on notification */
+          $input.closest('a').removeClass('has-unread');
+          toggleNotification();
+        } else {
+          $('.notification-item').removeClass('is-unread');
+        }
+      });
+      $('.notification-loadmore').on('inview', function(event, isInView) {
+        if (isInView) {
+          $(this).trigger('click');
+        }
+      });
+      $(document).on('click', '.notification-loadmore', function(e) {
+        if (!isLoadingMore) {
+          isLoadingMore = true;
+          loadNotification({
+            extraParams: {
+              last_id: newestNotificationId[activeNotificationTab]
+            },
+            onSuccess: function(result) {
+              appendNotificationItem(result);
+              var meta = prop(result, 'meta');
+              if (prop(meta, 'pagination.current_page') >= prop(meta, 'pagination.total_pages')) {
+                getNotificationLoadmoreEl().hide();
+              }
+              window.trakteer.notif.page[activeNotificationTab]++;
+              isLoadingMore = false;
+            }
+          });
+        }
+      }); /* $(document).on('click', '.marks-all-read', function(e) { if (!isLoadingMarksAllRead) { isLoadingMarksAllRead = true; var $button = $(this); var $prevHtml = $button.html(); $button.html('Loading..'); $.ajax({ url: 'https://api.trakteer.id/v1/user/notifications/marks-all-read', method: 'POST', data: { id: 'mv7dk486wak5b690' }, dataType: 'json', headers: { 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImE1Y2VmN2Q1MWJiNWE1MTg5NDYxYjMwMmI0YjNjZTc5YTcyMDU0Nzk1NzVmMDE5MWI2NWM3NmM2MzdjZGE3Njk1YjM4OWQ1ZDE5YjhkZDFlIn0.eyJhdWQiOiIxIiwianRpIjoiYTVjZWY3ZDUxYmI1YTUxODk0NjFiMzAyYjRiM2NlNzlhNzIwNTQ3OTU3NWYwMTkxYjY1Yzc2YzYzN2NkYTc2OTViMzg5ZDVkMTliOGRkMWUiLCJpYXQiOjE2NjAyNzI0NjYsIm5iZiI6MTY2MDI3MjQ2NiwiZXhwIjoxNjg2NDEyMjgzLCJzdWIiOiIyODk3NzQiLCJzY29wZXMiOltdfQ.oxwSE76inm7FU2IwRifBDXGim1Wgpo9Z9FyYgIKKSBNl2mpUMe-OT1-n4tgS4M8I51FEo9DJ1BlyqN-8C795aUHY2p6hdsccepLtAnfC8_vP51OGK49EKv-qu0Z7uGYp0k_gVbmHILsQdyRq7DWGurs5HK3xk6jYrMOmudsiFAqIkTT-d-XGWfsHFEl-QWXC9q5OeYOpGlq12dXA32h18P8iG_mzxi22EI5Noz-iOSBv6pVK9Ch5NkDRCX8EvEoNDBRdoiy-IWFB2FYLTPeYZJIr_z4qm_d5qXiGbdA2EmwD1WTdsKoBOLVobFyzy68h_VPlHwchZc4TgHKgwyse0T2cDu2e8KkpP-mm-LyhZ3faQx7vOA-6NZTjc2VBD_G-TYqbias13wH4OCePlw2_eoPwJqeqaqachoxhPvCz68aksWuCzNX2fmuLZ0ZweyJi-FnaPYcIcX8n8bdbPpxJ-3VMJ3O6fe0Blksmf1ivuzxd7AWK3_pcednlzqH1VwsLTDzSlz6DCbjXzEB2L7ywT8da0D28q862smQ9EyDwAisGLxItJ6pxSr4OhndYFJtijsa0JixY56CwvTAX5z4pl3j4pa0oai0d65X8EEOu762GqdbmFx49Vhuay3ABwLkZvxTb0uKVH17nZFzXz-Q7og34cOXslcthVHT1Yx5_W78' }, xhrFields: { withCredentials: true }, cache: false, success: function() { $button.remove(); }, error: function () { alert('Terjadi Kesalahan'); }, complete: function(result) { $button.html($prevHtml); } }); } }); */
+      $(document).on('click', '.notification-tabs > *', function() {
+        if (isFetching) {
+          return false;
+        }
+        $(this).closest('.notification-tabs').children().removeClass('is-active');
+        $(this).addClass('is-active');
+        activeNotificationTab = $(this).attr('data-tab-id') || 'system';
+        $('.notification-list').addClass('hide');
+        $('.' + activeNotificationTab + '-notification').removeClass('hide');
+        toggleNotification();
+      });
+      window.closeNotificationToggle = function() {
+        $('input.notification-toggle').trigger('click');
+      };
+    });
+  </script>
+  <script>
+    $(function() {
+      var isMobileMode = false;
+      var navClass = isMobileMode ? '.nav-search--mobile' : '.nav-search';
+      $(document).on('focusin', navClass + ' .search-input', function(e) {
+        $(this).closest('a').addClass('is-focused');
+        window.loadRecentActivities && window.loadRecentActivities(isMobileMode);
+      });
+    });
+  </script>
+  <script>
+    var isLoading = false;
+    $(document).on('click', '.send-test-message', function() {
+      var $trigger = $(this);
+      if (isLoading || $trigger.hasClass('disabled')) {
+        return false;
+      }
+      isLoading = true;
+      var $prevContent = $trigger.html();
+      $trigger.html('Loading..');
+      var userId = $(this).attr('data-user-id');
+      $.ajax({
+        url: 'https://api.trakteer.id/v1/creator-stream/send-test',
+        method: 'POST',
+        data: {
+          id: userId
+        },
+        dataType: 'json',
+        headers: {
+          'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImE1Y2VmN2Q1MWJiNWE1MTg5NDYxYjMwMmI0YjNjZTc5YTcyMDU0Nzk1NzVmMDE5MWI2NWM3NmM2MzdjZGE3Njk1YjM4OWQ1ZDE5YjhkZDFlIn0.eyJhdWQiOiIxIiwianRpIjoiYTVjZWY3ZDUxYmI1YTUxODk0NjFiMzAyYjRiM2NlNzlhNzIwNTQ3OTU3NWYwMTkxYjY1Yzc2YzYzN2NkYTc2OTViMzg5ZDVkMTliOGRkMWUiLCJpYXQiOjE2NjAyNzI0NjYsIm5iZiI6MTY2MDI3MjQ2NiwiZXhwIjoxNjg2NDEyMjgzLCJzdWIiOiIyODk3NzQiLCJzY29wZXMiOltdfQ.oxwSE76inm7FU2IwRifBDXGim1Wgpo9Z9FyYgIKKSBNl2mpUMe-OT1-n4tgS4M8I51FEo9DJ1BlyqN-8C795aUHY2p6hdsccepLtAnfC8_vP51OGK49EKv-qu0Z7uGYp0k_gVbmHILsQdyRq7DWGurs5HK3xk6jYrMOmudsiFAqIkTT-d-XGWfsHFEl-QWXC9q5OeYOpGlq12dXA32h18P8iG_mzxi22EI5Noz-iOSBv6pVK9Ch5NkDRCX8EvEoNDBRdoiy-IWFB2FYLTPeYZJIr_z4qm_d5qXiGbdA2EmwD1WTdsKoBOLVobFyzy68h_VPlHwchZc4TgHKgwyse0T2cDu2e8KkpP-mm-LyhZ3faQx7vOA-6NZTjc2VBD_G-TYqbias13wH4OCePlw2_eoPwJqeqaqachoxhPvCz68aksWuCzNX2fmuLZ0ZweyJi-FnaPYcIcX8n8bdbPpxJ-3VMJ3O6fe0Blksmf1ivuzxd7AWK3_pcednlzqH1VwsLTDzSlz6DCbjXzEB2L7ywT8da0D28q862smQ9EyDwAisGLxItJ6pxSr4OhndYFJtijsa0JixY56CwvTAX5z4pl3j4pa0oai0d65X8EEOu762GqdbmFx49Vhuay3ABwLkZvxTb0uKVH17nZFzXz-Q7og34cOXslcthVHT1Yx5_W78'
+        },
+        xhrFields: {
+          withCredentials: true
+        },
+        cache: false,
+        success: function() {
+          $trigger.addClass('disabled');
+          var time = 10,
+            r = $('#countdown'),
+            tmp = time;
+          var timer = setInterval(function() {
+            var c = tmp--,
+              m = (c / 60) >> 0,
+              s = (c - m * 60) - 1 + '';
+            if (s == 0) {
+              clearInterval(timer);
+              r.html('(10:00)');
+              $trigger.removeClass('disabled');
+              return true;
+            }
+            r.html('(' + (s.length > 1 ? '' : '0') + s + ':00)');
+            tmp != 0 || (tmp = time);
+          }, 1000);
+        },
+        error: function() {
+          alert('Terjadi Kesalahan');
+        },
+        complete: function() {
+          $trigger.html($prevContent);
+          isLoading = false;
+        }
+      });
+    });
+  </script>
+  <script>
+    var streamSettings = {};
+    streamSettings["nt_tts"] = "true";
+    streamSettings["nt_font"] = "Philosopher";
+    streamSettings["nt_mute"] = "false";
+    streamSettings["nt_audio"] = "/storage/audio/setting-uploads/jl0865yalez5bgme/1657639092_31B0zsEW.mp3";
+    streamSettings["nt_delay"] = "10";
+    streamSettings["nt_theme"] = "playful";
+    streamSettings["nt_2_clr1"] = "rgba(255, 255, 255, 1)";
+    streamSettings["nt_2_clr2"] = "rgba(45, 54, 80, 1)";
+    streamSettings["nt_2_clr3"] = "rgba(255, 255, 255, 1)";
+    streamSettings["nt_3_clr1"] = "rgba(0, 0, 0, 0)";
+    streamSettings["nt_3_clr2"] = "rgba(0, 0, 0, 1)";
+    streamSettings["nt_3_clr3"] = "rgba(255, 255, 255, 1)";
+    streamSettings["nt_3_clr4"] = "rgba(255, 255, 255, 1)";
+    streamSettings["nt_tts_voice_name"] = "female";
+    streamSettings["nt_tts_voice_rate"] = "1.2";
+    streamSettings["nt_tts_max_duration"] = "0";
+    streamSettings["nt_tts_ignore_symbol"] = "false";
+    streamSettings["nt_dir"] = "";
+    streamSettings["nt_gif"] = "";
+    window.setProp(window.trakteer, 'stream-widget.new-tip-notification.allowed-params', ['nt_theme', 'nt_gif', 'nt_mute', 'nt_dir', 'nt_delay', 'nt_audio', 'nt_font', /* Text to Speech Settings */ 'nt_tts', 'nt_tts_voice_name', 'nt_tts_voice_rate',
+      'nt_tts_max_duration', 'nt_tts_ignore_symbol', /* Theme restricted settings */ /* Default */ 'nt_1_clr1', 'nt_1_clr2', 'nt_1_clr3', /* Simple */ 'nt_2_clr1', 'nt_2_clr2', 'nt_2_clr3', /* Playful */ 'nt_3_clr1', 'nt_3_clr2', 'nt_3_clr3',
+      'nt_3_clr4', /* Retro */ 'nt_4_clr1', 'nt_4_clr2', 'nt_4_clr3', 'nt_4_clr4', 'nt_4_clr5',
+    ]); /* Theme */
+    var changeNotificationTheme = function(theme) {
+      window.runProp(window.trakteer, 'stream-widget.toggleExclusiveOptions', {
+        'key': 'theme',
+        'value': theme
+      });
+      var zoomLevel = 1;
+      if (theme === 'default' || theme === 'retro') {
+        zoomLevel = '0.6';
+      } else if (theme === 'playful') {
+        zoomLevel = '0.8';
+      } else {
+        zoomLevel = '0.8';
+      }
+      window.runProp(window.trakteer, 'stream-widget.changeOption', {
+        id: 'new-tip-notification',
+        keyValues: {
+          'nt_theme': theme,
+          'zoom': zoomLevel
+        }
+      });
+    };
+    $(document).on('change', '#notification-themes', function(e) {
+      changeNotificationTheme(e.target.value);
+    }); /* Initial Load */
+    window.runProp(window.trakteer, 'stream-widget.toggleExclusiveOptions', {
+      'key': 'theme',
+      'value': "playful"
+    }); /* Showing Direction [Theme: Simple] */
+    $(document).on('change', '#notification-direction-option', function(e) {
+      window.runProp(window.trakteer, 'stream-widget.changeOption', {
+        id: 'new-tip-notification',
+        key: 'nt_dir',
+        value: e.target.value
+      });
+    }); /* Sound */
+    $(document).on('change', '#notification-sound-option', function(e) {
+      window.runProp(window.trakteer, 'stream-widget.changeOption', {
+        id: 'new-tip-notification',
+        key: 'nt_mute',
+        value: e.target.checked ? 'false' : 'true'
+      });
+    }); /* Custom Fonts */
+    $(document).ready(function() {
+      $("#notification-custom-font-option").higooglefonts({
+        fonts: ["ABeeZee", "Abel", "Abril Fatface", "Acme", "Alegreya", "Alex Brush", "Alfa Slab One", "Amaranth", "Amatic SC", "Antic Slab", "Anton", "Arbutus Slab", "Architects Daughter", "Archivo", "Archivo Black", "Archivo Narrow",
+          "Arima Madurai", "Arimo", "Arvo", "Asap", "Assistant", "Bad Script", "Baloo Bhaina", "Bangers", "Berkshire Swash", "Boogaloo", "Bungee Shade", "Balsamiq Sans", "Barlow", "Barrio", "Bebas Neue", "Bitter", "Bree Serif", "Cabin",
+          "Cairo", "Catamaran", "Caveat", "Caveat Brush", "Cinzel", "Cormorant Garamond", "Crimson Text", "Cantata One", "Ceviche One", "Chewy", "Contrail One", "Crete Round", "Dancing Script", "DM Sans", "Domine", "Dosis", "EB Garamond",
+          "Exo 2", "Fascinate", "Fjalla One", "Francois One", "Freckle Face", "Fredoka One", "Galada", "Gloria Hallelujah", "Gochi Hand", "Great Vibes", "Handlee", "Heebo", "Hind", "Inconsolata", "Indie Flower", "Josefin Sans", "Kanit",
+          "Karla", "Kaushan Script", "Lalezar", "Lato", "Libre Baskerville", "Libre Franklin", "Life Savers", "Lobster", "Lora", "Luckiest Guy", "Manrope", "Martel", "Maven Pro", "Merriweather", "Merriweather Sans", "Montserrat", "Mukta",
+          "Mulish", "Marcellus SC", "Monoton", "Nanum Gothic", "Nanum Myeongjo", "Noto Sans", "Noto Serif", "Nunito", "Nunito Sans", "News Cycle", "Nothing You Could Do", "Open Sans", "Oswald", "Overpass", "Oxygen",
+          "Oleo Script Swash Caps", "Oranienbaum", "Pacifico", "Patrick Hand", "Play", "Playfair Display", "Playfair Display SC", "Prompt", "Permanent Marker", "Philosopher", "Poiret One", "Press Start 2P", "Prosto One", "Questrial",
+          "Quattrocento", "Raleway", "Rancho", "Righteous", "Roboto", "Roboto Condensed", "Roboto Slab", "Rubik", "Rye", "Satisfy", "Shadows Into Light", "Shrikhand", "Signika", "Slabo 27px", "Shojumaru", "Sigmar One", "Skranji",
+          "Special Elite", "Tajawal", "Teko", "Titillium Web", "Tinos", "Ultra", "UnifrakturMaguntia", "VT323", "Varela Round", "Work Sans", "Yanone Kaffeesatz", "Zilla Slab"
+        ],
+        initialValue: "Philosopher",
+        onSelect: function(e) {
+          window.runProp(window.trakteer, 'stream-widget.changeOption', {
+            id: 'new-tip-notification',
+            key: 'nt_font',
+            value: e.params.data.id
+          });
+        }
+      });
+    }); /* Showing Duration */
+    $(document).on('input', '#notification-delay-option', function(e) {
+      var min = parseInt($(this).attr('min'));
+      var max = parseInt($(this).attr('max'));
+      var value = e.target.value;
+      if (value < min) {
+        value = min;
+        $(this).val(value);
+      } else if (value > max) {
+        value = max;
+        $(this).val(value);
+      }
+      window.runProp(window.trakteer, 'stream-widget.changeOption', {
+        id: 'new-tip-notification',
+        key: 'nt_delay',
+        value: value
+      });
+    }); /* Custom GIF Animation [Theme: Playful] */
+    $(document).on('change', '#notification-gif-option', function(e) {
+      if (!window.FileReader) {
+        alert("The file API isn't supported on this browser yet.");
+        $('#notification-gif-option').val('');
+        return;
+      }
+      if (e.target.files[0].size / 1000 > 2048) {
+        alert("File gif tidak boleh lebih dari 2048 kilobytes");
+        $('#notification-gif-option').val('');
+        return;
+      }
+      $('#new-tip-notification').addClass('is-loading');
+      window.runProp(window.trakteer, 'stream-widget.toggleSubmit', 'new-tip-notification');
+      var formData = new FormData();
+      formData.append("id", "mv7dk486wak5b690");
+      formData.append("gif", e.target.files[0]);
+      formData.append("creator_id", "jl0865yalez5bgme");
+      $.ajax({
+        url: 'https://api.trakteer.id/v1/stream-settings/upload/gif',
+        method: 'POST',
+        data: formData,
+        dataType: 'json',
+        headers: {
+          'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImE1Y2VmN2Q1MWJiNWE1MTg5NDYxYjMwMmI0YjNjZTc5YTcyMDU0Nzk1NzVmMDE5MWI2NWM3NmM2MzdjZGE3Njk1YjM4OWQ1ZDE5YjhkZDFlIn0.eyJhdWQiOiIxIiwianRpIjoiYTVjZWY3ZDUxYmI1YTUxODk0NjFiMzAyYjRiM2NlNzlhNzIwNTQ3OTU3NWYwMTkxYjY1Yzc2YzYzN2NkYTc2OTViMzg5ZDVkMTliOGRkMWUiLCJpYXQiOjE2NjAyNzI0NjYsIm5iZiI6MTY2MDI3MjQ2NiwiZXhwIjoxNjg2NDEyMjgzLCJzdWIiOiIyODk3NzQiLCJzY29wZXMiOltdfQ.oxwSE76inm7FU2IwRifBDXGim1Wgpo9Z9FyYgIKKSBNl2mpUMe-OT1-n4tgS4M8I51FEo9DJ1BlyqN-8C795aUHY2p6hdsccepLtAnfC8_vP51OGK49EKv-qu0Z7uGYp0k_gVbmHILsQdyRq7DWGurs5HK3xk6jYrMOmudsiFAqIkTT-d-XGWfsHFEl-QWXC9q5OeYOpGlq12dXA32h18P8iG_mzxi22EI5Noz-iOSBv6pVK9Ch5NkDRCX8EvEoNDBRdoiy-IWFB2FYLTPeYZJIr_z4qm_d5qXiGbdA2EmwD1WTdsKoBOLVobFyzy68h_VPlHwchZc4TgHKgwyse0T2cDu2e8KkpP-mm-LyhZ3faQx7vOA-6NZTjc2VBD_G-TYqbias13wH4OCePlw2_eoPwJqeqaqachoxhPvCz68aksWuCzNX2fmuLZ0ZweyJi-FnaPYcIcX8n8bdbPpxJ-3VMJ3O6fe0Blksmf1ivuzxd7AWK3_pcednlzqH1VwsLTDzSlz6DCbjXzEB2L7ywT8da0D28q862smQ9EyDwAisGLxItJ6pxSr4OhndYFJtijsa0JixY56CwvTAX5z4pl3j4pa0oai0d65X8EEOu762GqdbmFx49Vhuay3ABwLkZvxTb0uKVH17nZFzXz-Q7og34cOXslcthVHT1Yx5_W78'
+        },
+        xhrFields: {
+          withCredentials: true
+        },
+        async: true,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(response) {
+          var resultUrl = window.prop(response, 'file.url');
+          $('#preview-avatar').attr('src', "https://trakteer.id" + resultUrl);
+          $('#notification-remove-gif-option').removeClass('hide');
+          window.runProp(window.trakteer, 'stream-widget.changeOption', {
+            id: 'new-tip-notification',
+            key: 'nt_gif',
+            value: resultUrl
+          });
+        },
+        error: function(response) {
+          $('#notification-gif-option').val('');
+          window.notifier.alert(window.prop(response, 'responseJSON.errors.gif.0') || 'Terjadi Kesalahan');
+        },
+        complete: function(response) {
+          $('#new-tip-notification').removeClass('is-loading');
+        }
+      });
+    });
+    $(document).on('click', '#notification-remove-gif-option', function(e) {
+      var defaultGIF = "https://cdn.trakteer.id/images/mix/love.gif";
+      $('#preview-avatar').attr('src', defaultGIF);
+      $('#notification-remove-gif-option').addClass('hide');
+      $('#notification-gif-option').val("");
+      window.runProp(window.trakteer, 'stream-widget.changeOption', {
+        id: 'new-tip-notification',
+        key: 'nt_gif',
+        value: null
+      });
+    }); /* Custom Audio */
+    $(document).on('change', '#notification-audio-option', function(e) {
+      if (!window.FileReader) {
+        alert("The file API isn't supported on this browser yet.");
+        $('#notification-audio-option').val('');
+        return;
+      }
+      if (e.target.files[0].size / 1000 > 1024) {
+        alert("File audio tidak boleh lebih dari 1024 kilobytes");
+        $('#notification-audio-option').val('');
+        return;
+      }
+      $('#new-tip-notification').addClass('is-loading');
+      window.runProp(window.trakteer, 'stream-widget.toggleSubmit', 'new-tip-notification');
+      var formData = new FormData();
+      formData.append("id", "mv7dk486wak5b690");
+      formData.append("audio", e.target.files[0]);
+      formData.append("creator_id", "jl0865yalez5bgme");
+      $.ajax({
+        url: 'https://api.trakteer.id/v1/stream-settings/upload/audio',
+        method: 'POST',
+        data: formData,
+        dataType: 'json',
+        headers: {
+          'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImE1Y2VmN2Q1MWJiNWE1MTg5NDYxYjMwMmI0YjNjZTc5YTcyMDU0Nzk1NzVmMDE5MWI2NWM3NmM2MzdjZGE3Njk1YjM4OWQ1ZDE5YjhkZDFlIn0.eyJhdWQiOiIxIiwianRpIjoiYTVjZWY3ZDUxYmI1YTUxODk0NjFiMzAyYjRiM2NlNzlhNzIwNTQ3OTU3NWYwMTkxYjY1Yzc2YzYzN2NkYTc2OTViMzg5ZDVkMTliOGRkMWUiLCJpYXQiOjE2NjAyNzI0NjYsIm5iZiI6MTY2MDI3MjQ2NiwiZXhwIjoxNjg2NDEyMjgzLCJzdWIiOiIyODk3NzQiLCJzY29wZXMiOltdfQ.oxwSE76inm7FU2IwRifBDXGim1Wgpo9Z9FyYgIKKSBNl2mpUMe-OT1-n4tgS4M8I51FEo9DJ1BlyqN-8C795aUHY2p6hdsccepLtAnfC8_vP51OGK49EKv-qu0Z7uGYp0k_gVbmHILsQdyRq7DWGurs5HK3xk6jYrMOmudsiFAqIkTT-d-XGWfsHFEl-QWXC9q5OeYOpGlq12dXA32h18P8iG_mzxi22EI5Noz-iOSBv6pVK9Ch5NkDRCX8EvEoNDBRdoiy-IWFB2FYLTPeYZJIr_z4qm_d5qXiGbdA2EmwD1WTdsKoBOLVobFyzy68h_VPlHwchZc4TgHKgwyse0T2cDu2e8KkpP-mm-LyhZ3faQx7vOA-6NZTjc2VBD_G-TYqbias13wH4OCePlw2_eoPwJqeqaqachoxhPvCz68aksWuCzNX2fmuLZ0ZweyJi-FnaPYcIcX8n8bdbPpxJ-3VMJ3O6fe0Blksmf1ivuzxd7AWK3_pcednlzqH1VwsLTDzSlz6DCbjXzEB2L7ywT8da0D28q862smQ9EyDwAisGLxItJ6pxSr4OhndYFJtijsa0JixY56CwvTAX5z4pl3j4pa0oai0d65X8EEOu762GqdbmFx49Vhuay3ABwLkZvxTb0uKVH17nZFzXz-Q7og34cOXslcthVHT1Yx5_W78'
+        },
+        xhrFields: {
+          withCredentials: true
+        },
+        async: true,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(response) {
+          window.runProp(window.trakteer, 'stream-widget.changeOption', {
+            id: 'new-tip-notification',
+            key: 'nt_audio',
+            value: window.prop(response, 'file.url')
+          });
+          $('#notification-play-audio-option').removeClass('hide');
+          $('#notification-remove-audio-option').removeClass('hide');
+        },
+        error: function(response) {
+          $('#notification-audio-option').val('');
+          window.notifier.alert(window.prop(response, 'responseJSON.errors.audio.0') || 'Terjadi Kesalahan');
+        },
+        complete: function(response) {
+          $('#new-tip-notification').removeClass('is-loading');
+        }
+      });
+    });
+    $(document).on('click', '#notification-play-audio-option', function(e) {
+      var elPreview = $('#new-tip-notification .widget-preview')[0];
+      if (elPreview) {
+        elPreview.contentWindow.location.reload();
+      }
+    });
+    $(document).on('click', '#notification-remove-audio-option', function(e) {
+      $('#notification-play-audio-option').addClass('hide');
+      $('#notification-remove-audio-option').addClass('hide');
+      $('#notification-audio-option').val('');
+      window.runProp(window.trakteer, 'stream-widget.changeOption', {
+        id: 'new-tip-notification',
+        key: 'nt_audio',
+        value: null
+      });
+    }); /* Color Picker */
+    var colorSwatches = ['rgb(190, 30, 45)', 'rgb(255, 200, 73)', 'rgb(244, 67, 54)', 'rgb(233, 30, 99)', 'rgb(156, 39, 176)', 'rgb(103, 58, 183)', 'rgb(63, 81, 181)', 'rgb(33, 150, 243)', 'rgb(3, 169, 244)', 'rgb(0, 188, 212)', 'rgb(0, 150, 136)',
+      'rgb(76, 175, 80)', 'rgb(139, 195, 74)', 'rgb(205, 220, 57)', 'rgb(255, 235, 59)', 'rgb(255, 193, 71)'
+    ];
+    var colorPalettes = {};
+    var addColorPalette = function(el, options, args) {
+      if (!options) {
+        options = {};
+      }
+      var newElement = document.createElement('div');
+      $(el).append(newElement);
+      var pickr = Pickr.create(Object.assign({
+        el: newElement,
+        theme: 'classic',
+        swatches: colorSwatches,
+        components: {
+          preview: true,
+          opacity: true,
+          hue: true,
+          interaction: {
+            hex: true,
+            rgba: true,
+            input: true,
+            save: true
+          }
+        }
+      }, options));
+      colorPalettes[args.name] = pickr;
+      pickr.on('save', function(color, instance) {
+        window.runProp(window.trakteer, 'stream-widget.changeOption', {
+          id: 'new-tip-notification',
+          key: args.name,
+          value: color.toRGBA().toString(0)
+        });
+        pickr.hide();
+      });
+    }; /* Default colors on each theme */
+    var defaultColors = [
+      ['#be1e2d', '#fff', '#000'],
+      ['#be1e2d', '#fff', '#000'],
+      ['#be1e2d', '#fff8f8', '#000', '#fff'],
+      ['#fbfbfb', '#be1e2d', '#000', '#000', '#262522'],
+    ];
+    for (let themeIndex = 0; themeIndex < defaultColors.length; themeIndex++) {
+      for (let colorIndex = 0; colorIndex < defaultColors[themeIndex].length; colorIndex++) {
+        var themeId = themeIndex + 1;
+        var colorId = colorIndex + 1;
+        addColorPalette('.nt-' + themeId + '-clr' + colorId, {
+          default: streamSettings['nt_' + themeId + '_clr' + colorId] || defaultColors[themeIndex][colorIndex]
+        }, {
+          name: 'nt_' + themeId + '_clr' + colorId
+        });
+      }
+    } /* Reset color palettes */
+    $(document).on('click', '#reset-nt-palette', function(e) {
+      var themeId = $(this).attr('data-theme-id') || 1;
+      var themeIndex = Number(themeId) - 1;
+      for (let colorIndex = 0; colorIndex < defaultColors[themeIndex].length; colorIndex++) {
+        var colorId = colorIndex + 1;
+        colorPalettes['nt_' + themeId + '_clr' + colorId].setColor(defaultColors[themeIndex][colorIndex]);
+      }
+    }); /* Generate URL */
+    $(document).on('click', '#new-tip-notification .widget-generate', function(e) {
+      window.runProp(window.trakteer, 'stream-widget.generateUrl', {
+        id: 'new-tip-notification',
+        type: 'nt'
+      });
+    });
+  </script>
+  <script>
+    /* Option saved to stream settings */
+    var selectedVoiceName = "female";
+    var selectedVoiceRate = $('#tts-settings-rate').val(); /* On Option Changes */
+    $(document).on('change', '#notification-tts-option', function(e) {
+      window.runProp(window.trakteer, 'stream-widget.changeOption', {
+        id: 'new-tip-notification',
+        key: 'nt_tts',
+        value: e.target.checked ? 'true' : 'false'
+      });
+    }); /* On Voice Changes */
+    $(document).on('change', '#tts-settings-voices', function(e) {
+      selectedVoiceName = e.target.value;
+    }); /* On Rate Changes */
+    $(document).on('change', '#tts-settings-rate', function(e) {
+      selectedVoiceRate = e.target.value;
+    }); /* On Allow Max Duration Changes */
+    $(document).on('change', '#tts-allow-max-duration', function(e) {
+      if (e.target.checked) {
+        $('#tts-max-duration-wrapper').addClass('hide');
+      } else {
+        $('#tts-max-duration-wrapper').removeClass('hide');
+      }
+    }); /* On Speech Play */
+    $(document).on('click', '#tts-settings-test', function() {
+      /* Pindahkan voice ke cdn and public/audio -> ganti dicontroller jg */
+      $.ajax({
+        url: 'https://api.trakteer.id/v1/creator-stream/send-tts',
+        method: 'POST',
+        data: {
+          rate: selectedVoiceRate,
+          name: selectedVoiceName
+        },
+        dataType: 'json',
+        headers: {
+          'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImE1Y2VmN2Q1MWJiNWE1MTg5NDYxYjMwMmI0YjNjZTc5YTcyMDU0Nzk1NzVmMDE5MWI2NWM3NmM2MzdjZGE3Njk1YjM4OWQ1ZDE5YjhkZDFlIn0.eyJhdWQiOiIxIiwianRpIjoiYTVjZWY3ZDUxYmI1YTUxODk0NjFiMzAyYjRiM2NlNzlhNzIwNTQ3OTU3NWYwMTkxYjY1Yzc2YzYzN2NkYTc2OTViMzg5ZDVkMTliOGRkMWUiLCJpYXQiOjE2NjAyNzI0NjYsIm5iZiI6MTY2MDI3MjQ2NiwiZXhwIjoxNjg2NDEyMjgzLCJzdWIiOiIyODk3NzQiLCJzY29wZXMiOltdfQ.oxwSE76inm7FU2IwRifBDXGim1Wgpo9Z9FyYgIKKSBNl2mpUMe-OT1-n4tgS4M8I51FEo9DJ1BlyqN-8C795aUHY2p6hdsccepLtAnfC8_vP51OGK49EKv-qu0Z7uGYp0k_gVbmHILsQdyRq7DWGurs5HK3xk6jYrMOmudsiFAqIkTT-d-XGWfsHFEl-QWXC9q5OeYOpGlq12dXA32h18P8iG_mzxi22EI5Noz-iOSBv6pVK9Ch5NkDRCX8EvEoNDBRdoiy-IWFB2FYLTPeYZJIr_z4qm_d5qXiGbdA2EmwD1WTdsKoBOLVobFyzy68h_VPlHwchZc4TgHKgwyse0T2cDu2e8KkpP-mm-LyhZ3faQx7vOA-6NZTjc2VBD_G-TYqbias13wH4OCePlw2_eoPwJqeqaqachoxhPvCz68aksWuCzNX2fmuLZ0ZweyJi-FnaPYcIcX8n8bdbPpxJ-3VMJ3O6fe0Blksmf1ivuzxd7AWK3_pcednlzqH1VwsLTDzSlz6DCbjXzEB2L7ywT8da0D28q862smQ9EyDwAisGLxItJ6pxSr4OhndYFJtijsa0JixY56CwvTAX5z4pl3j4pa0oai0d65X8EEOu762GqdbmFx49Vhuay3ABwLkZvxTb0uKVH17nZFzXz-Q7og34cOXslcthVHT1Yx5_W78'
+        },
+        xhrFields: {
+          withCredentials: true
+        },
+        cache: false,
+        success: function(response) {
+          var audioSpeech = new Audio(response.audioSpeechUrl);
+          audioSpeech.playbackRate = selectedVoiceRate;
+          audioSpeech.play();
+        },
+        error: function() {
+          alert('Terjadi Kesalahan');
+        },
+        complete: function() {}
+      });
+    }); /* On apply */
+    $('#apply-tts-settings').on('click', function() {
+      window.runProp(window.trakteer, 'stream-widget.changeOption', {
+        id: 'new-tip-notification',
+        keyValues: {
+          'nt_tts_voice_name': selectedVoiceName,
+          'nt_tts_voice_rate': selectedVoiceRate,
+          'nt_tts_ignore_symbol': $('#tts-ignore-symbol').is(':checked'),
+          'nt_tts_max_duration': $('#tts-allow-max-duration').is(':checked') ? 0 : $('#tts-max-duration').val()
+        }
+      });
+      $('#modal-tts-settings').trigger('click');
+    });
+  </script>
+  <script>
+    ! function(f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function() {
+        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = !0;
+      n.version = '2.0';
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2866731583373643');
+    fbq('track', 'PageView');
+  </script><noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2866731583373643&ev=PageView&noscript=1" /></noscript>
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+.container {
+      margin-left: 0px;
+      display: none;
+      transition: opacity 0.5s;
+      font-family: var(--fontFamily);
+    }
+
+.quantity-label {
+visibility: hidden;
+}
+
+.stream-content {
+   left:100px;
+   box-shadow: 10px 10px 30px -10px #cb0518;
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: #B9A166;
+    top:50px;
+    outline-offset: -1px;
+    background-clip: border-box;
+    background-color: #671B28;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('https://media.discordapp.net/attachments/953950000017190922/1005528798118301766/slebew.png');
+    border-radius: 0.4rem;
+}
+
+
+
+.letters-1 {
+position: relative;
+
+   background-image:radial-gradient(circle farthest-corner at center center, #EED180 0%, #FFF89C 97%);
+   color:transparent;
+   -webkit-background-clip:text;
+}
+
+.support-message {
+    top: -20px;
+    position: relative;
+    display: inline-block;
+    position: relative;
+    animation: float1 2s infinite;
+}
+
+.letters-2 {
+
+}
+
+.bubbles.bubbles-top>.bubble-2 {
+      content: url('https://imgur.com/PTsMP43.png');
+
+      background-size: 220px 220px;
+      background-color: transparent;
+      width: 220px;
+      height: 220px;
+      top: -159px;
+      left: 150px;
+      position: absolute;
+      animation: gede 4s infinite;
+    }
+
+img.unit-icon {
+
+      content: url('https://imgur.com/QN6fqTO.png');
+      background-size: 40px 70px;
+      background-color: transparent;
+      width: 40px;
+      height: 70px;
+      background-color: transparent;
+      font-size:  0pt !important;
+      top: -35px;
+      left: -307px;
+
+  position: relative;
+}
+
+.bubbles.bubbles-top>.bubble-3 {
+visibility: hidden;
+      background-image: url('https://imgur.com/O3YcvrG.png');
+    background-size: 220px 220px;
+      background-color: transparent;
+      width: 149px;
+      height: 169px;
+     width: 220px;
+
+      margin-left: -60px;
+      margin-top: -60px;
+      border-width: 0px;
+    }
+
+.bubbles>div {
+     margin-left: px;
+      position: absolute;
+      background:transparent;
+}
+
+@-webkit-keyframes gede {
+  0%   {
+-webkit-transform: scale(1)  rotate(0deg);
+}
+  50% {
+-webkit-transform: scale(1)  rotate(14deg);
+}
+  100%   {
+-webkit-transform: scale(1)  rotate(0deg);
+}
+
+}

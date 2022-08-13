@@ -1,0 +1,152 @@
+
+
+.stream-content {
+    background-color: transparent;
+    background-image: url('https://imgur.com/6Nij5Eh.png');
+    background-size: 1280px 720px;
+    border:transparent;
+    text-align: center;
+    width: 1280px;
+    height: 720px;
+    font-family: Fredoka+One;
+    animation: float1 4s infinite;
+    -webkit-animation: float1 4s infinite;
+}
+
+
+.supporter-avatar {
+  position: relative ;
+  animation: scaleall 0.5s ease-in-out;
+}
+
+.supporter-avatar>img {
+  border-radius: 40px;
+  left: 1000px !important ;
+  margin-top: 200px;
+  border-left: 2px solid rgba(255, 255, 255, 0);
+  border-bottom: 2px solid rgba(255, 255, 255, 0);
+  height: 100px;
+  width: 100px;
+
+}
+
+
+.letters-1 {
+position: relative;
+   /transform: translate(-50%,-50%);
+   top: -20px;
+   /left: 50%;
+   letter-spacing: 5px;
+   font-size: 3em;
+   font-weight: bold;
+   background-image:radial-gradient(circle farthest-corner at center center, #CF2F17 0%, #CF9D15 97%);
+   color:transparent;
+   -webkit-background-clip:text;
+
+   /animation: float1 2s infinite;
+}
+
+.letters-1:after{
+    background: none;
+    content: attr(data-heading);
+    left: 0;
+    top: 0;
+    z-index: -1;
+    position: absolute;
+    text-shadow:
+		-1px 0 1px #c6bb9f,
+		0 1px 1px #c6bb9f,
+		5px 5px 10px rgba(0, 0, 0, 0.4),
+		-5px -5px 10px rgba(0, 0, 0, 0.4);
+
+}
+.message {
+    font-size: 1em;
+    padding: 65px;
+    color: rgba(0, 0, 0, 1);
+    padding: 15px 30px 0 60px;
+}
+
+.support-message {
+    font-size: 3em;
+    font-weight: 100;
+    color: white;
+    padding: 50px 20px 10px 20px;
+    line-height: 1em;
+    position: relative;
+    display: inline-block;
+    color: rgba(255, 255, 255, 1);
+    position: relative;
+    animation: float1 2s infinite;
+}
+
+.letters-2 {
+  text-align:center;
+  margin-top: -20px;
+  font-size: 2em !important;
+  color: rgba(255, 255, 255, 1);
+  /animation: float1 2s infinite;
+
+}
+
+
+
+
+img.unit-icon {
+    width: 300px;
+    height: 300px;
+    background: transparent;
+    content: url('https://imgur.com/T8K20GO.png');
+   border: transparent !important;
+    border-left: 3px solid rgba(255, 255, 255,0);
+    border-bottom: 3px solid rgba(255, 255, 255, 0);
+    border-radius: 6px;
+    left: -500px;
+    top: 520px;
+    padding: 7px;
+    z-index: 1;
+    animation: rotation 10s infinite linear , pulse 2s infinite linear;
+
+  position: relative;
+}
+
+.quantity-label {
+visibility: hidden;
+}
+
+
+
+
+.bubbles {
+visibility: hidden;
+      position: absolute;
+      animation: scaleall 1s ease-in-out;
+    }
+@keyframes float1 {
+      0% {
+        transform: translatey(0px);
+      }
+
+      50% {
+        transform: translatey(-30px);
+      }
+
+      100% {
+        transform: translatey(0px);
+      }
+    }
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+@keyframes pulse { 15% { transform: scale(1.2); } }
+@-webkit-keyframes pulse { 15% { -webkit-transform: scale(1.2); } }
+.pulse {
+            animation: pulse 3s infinite;
+    -webkit-animation: pulse 3s infinite;
+}

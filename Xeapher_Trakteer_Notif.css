@@ -1,0 +1,235 @@
+.container {
+      margin-left: 140px;
+      display: none;
+      transition: opacity 0.5s;
+      font-family: var(--fontFamily);
+
+    }
+
+.stream-content {
+    background-color: transparent;
+    background-image: url('https://imgur.com/3Tc2frq.png');
+    background-size: 1613px 898px;
+    text-align: center;
+    width: 1613px;
+    height: 898px;
+    border: transparent;
+    animation: fadeInUp 2s ease-in-out;
+    animation-iteration-count: 1;
+}
+
+
+
+.supporter-avatar {
+  position: relative ;
+  animation: scaleall 0.5s ease-in-out , wave 2s infinite;
+}
+
+.supporter-avatar>img {
+  border-radius: 9999px;
+  margin-left: 20px !important ;
+  margin-top: 0px;
+  background:  rgba(255, 255, 255, 1);
+  border-left: 0px solid rgba(255, 255, 255, 1);
+  border-bottom: 0px solid rgba(255, 255, 255, 1);
+  height: 195px;
+  width: 195px;
+
+
+}
+
+
+.letters-1 {
+  position: relative;
+   /transform: translate(-50%,-50%);
+   top: 50px;
+   /left: 50%;
+   letter-spacing: 5px;
+   font-size: 3em;
+   font-weight: bold;
+   background-image:radial-gradient(circle farthest-corner at center center, #45FFFD 0%, #BA9BC9 30%);
+   color: transparent;
+   -webkit-background-clip:text;
+
+   animation: wave 0.5s infinite;
+  -webkit-animation: wave 0.5s infinite;
+}
+
+
+.message {
+    font-size: 1em;
+    padding: 65px;
+    color: rgba(0, 0, 0, 1);
+    padding: 15px 30px 0 60px;
+}
+
+.support-message {
+    font-size: 3em;
+    font-weight: 100;
+    color: white;
+    padding: 50px 20px 10px 20px;
+    line-height: 1em;
+    position: relative;
+    display: inline-block;
+    color: rgba(255, 255, 255, 1);
+    position: relative;
+    animation: wave 0.5s infinite;
+  -webkit-animation: wave 0.5s infinite;
+}
+
+.letters-2 {
+  text-align:center;
+  margin-top: 60px;
+  font-size: 2em !important;
+  color: #45FFFD;
+ animation: wave 0.5s infinite;
+  -webkit-animation: wave 0.5s infinite;
+
+}
+
+
+
+
+img.unit-icon {
+    width: 136px;
+    height: 120px;
+    background: transparent;
+    content: url('https://imgur.com/QayK9hj.png');
+    border: transparent !important;
+    border-left: 3px solid rgba(255, 255, 255,0);
+    border-bottom: 3px solid rgba(255, 255, 255, 0);
+    border-radius: 6px;
+    left: -740px;
+    top: 145px;
+    padding: 7px;
+    z-index: 1;
+    animation: fadeUp 10s ease-in-out , float1 2s infinite !important;
+
+  position: relative;
+}
+
+.quantity-label {
+visibility: hidden;
+}
+
+
+
+    .bubbles {
+      position: absolute;
+      animation: fadeInUp  3s ease-in-out !important;
+     margin-left: -142px;
+      top: 550px;
+    }
+
+    .bubbles>div {
+     margin-left: -5px;
+      position: absolute;
+      width: 1867px;
+      height: 437px;
+      background:transparent;
+      background-image: url('https://imgur.com/Z10VpIe.png');
+      border-radius: 0px;
+      border-left: 0px solid rgba(255, 255, 255, 1);
+      border-bottom: 0px solid rgba(255, 255, 255, 1);
+      animation: float 3s infinite ;
+    }
+
+    .bubbles-top {
+      left: 30px;
+      bottom: 8px;
+    }
+
+    .bubbles.bubbles-top>.bubble-2 {
+     background-image: url('https://imgur.com/UHp8XDf.png');
+     background-size: 93px 88px;
+      width: 93px;
+      height: 88px;
+      margin-left: 1600px;
+      margin-top: 82px;
+      border-width: 0px;
+     animation: gede 4s infinite !important;
+     -webkit-animation: gede 4s infinite !important;
+    }
+
+    .bubbles.bubbles-top>.bubble-3 {
+     background-image: url('https://imgur.com/MTTJkgM.png');
+     background-size: 1329px 289px;
+     width: 1329px;
+      height: 289px;
+      margin-left: 300px;
+      margin-top: -410px;
+      border-width: 0px;
+    }
+
+    .bubbles>div.bubble-2 {
+      animation-delay: 1s;
+    }
+
+    .bubbles>div.bubble-3 {
+      animation-delay: 1s;
+    }
+
+@keyframes float1 {
+      0% {
+        transform: translatey(0px);
+      }
+
+      50% {
+        transform: translatey(-30px);
+      }
+
+      100% {
+        transform: translatey(0px);
+      }
+    }
+
+
+@-webkit-keyframes gede {
+  0%   {
+-webkit-transform: scale(.8)  rotate(0deg);
+}
+  50% {
+-webkit-transform: scale(1.5)  rotate(359deg);
+}
+  100%   {
+-webkit-transform: scale(.8)  rotate(0deg);
+}
+
+}
+
+@-webkit-keyframes wave {
+  50% {
+    -webkit-transform: translateY(-3px);
+  }
+}
+
+.wave {
+  animation: wave 0.5s infinite;
+  -webkit-animation: wave 0.5s infinite;
+}
+
+
+
+@keyframes fadeInUp {
+    from {
+        transform: translate3d(0,40px,0);
+         opacity: 0 ;
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1 ;
+    }
+}
+
+@-webkit-keyframes fadeInUp {
+    from {
+        transform: translate3d(0,40px,0);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}

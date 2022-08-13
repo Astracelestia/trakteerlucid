@@ -1,0 +1,241 @@
+.container {
+      margin-left: 200px;
+      display: none;
+      transition: opacity 0.5s;
+      font-family: var(--fontFamily);
+
+    }
+
+.stream-content {
+    top: 500px;
+    background-color: transparent;
+    background-image: url('https://imgur.com/leUJ2HQ.png');
+    background-size: 1888px 1116px;
+    text-align: center;
+    width: 1888px;
+    height: 1116px;
+    border: transparent;
+    animation: fadeInUp 2s ease-in-out;
+    animation-iteration-count: 1;
+}
+
+.supporter-avatar {
+  position: relative ;
+  animation: scaleall 0.5s ease-in-out , wave 2s infinite;
+}
+
+.supporter-avatar>img {
+  border-radius: 9999px;
+  margin-left: 20px !important ;
+  margin-top: 0px;
+  visibility: hidden;
+  background:  rgba(255, 255, 255, 1);
+  border-left: 0px solid rgba(255, 255, 255, 1);
+  border-bottom: 0px solid rgba(255, 255, 255, 1);
+  height: 195px;
+  width: 195px;
+
+
+}
+
+
+.letters-1 {
+  position: relative;
+   top: 50px;
+   letter-spacing: 5px;
+   font-size: 4em;
+   font-weight: bold;
+  -webkit-animation: wave 0.5s infinite;
+}
+
+
+.message {
+    font-size: 1em;
+    padding: 65px;
+    padding: 15px 30px 0 60px;
+}
+
+.support-message {
+    font-size: 5em;
+    font-weight: 100;
+    padding: 50px 20px 10px 20px;
+    line-height: 1em;
+    position: relative;
+    display: inline-block;
+    position: relative;
+    animation: wave 0.5s infinite;
+  -webkit-animation: wave 0.5s infinite;
+}
+
+.letters-2 {
+  text-align:center;
+  margin-top: 60px;
+  font-size: 3em !important;
+ animation: wave 0.5s infinite;
+  -webkit-animation: wave 0.5s infinite;
+
+}
+
+
+img.unit-icon {
+    width: 707px;
+    height: 597px;
+    background: transparent;
+    content: url('https://imgur.com/u5eTioZ.png');
+    border: transparent !important;
+    border-left: 3px solid rgba(255, 255, 255,0);
+    border-bottom: 3px solid rgba(255, 255, 255, 0);
+    border-radius: 6px;
+    left: -590px;
+    top: -340px;
+    padding: 7px;
+    z-index: 1;
+    animation: fadeUp 4s ease-in-out , float1 2s infinite !important;
+
+  position: relative;
+}
+
+.quantity-label {
+visibility: hidden;
+}
+
+.bubbles.bubbles-top>.bubble-2 {
+     background-image: url('https://imgur.com/leUJ2HQ.png');
+      background-size: 629px 372px;
+      background-color: transparent;
+      width: 629px;
+      height: 372px;
+      margin-left: 1400px;
+      margin-top: -300px;
+      border-width: 0px;
+       animation: bounce 1.5s infinite;
+  -webkit-animation: bounce 1.5s infinite;
+
+    }
+
+    .bubbles.bubbles-top>.bubble-3 {
+     background-image: url('https://imgur.com/leUJ2HQ.png');
+     background-size: 629px 372px;
+     width: 629px;
+      height: 372px;
+background-color: transparent;
+      margin-left: -200px;
+      margin-top: -300px;
+      border-width: 0px;
+ animation: bounce 1.5s infinite;
+  -webkit-animation: bounce 1.5s infinite;
+    }
+
+
+
+@keyframes float1 {
+      0% {
+        transform: translatey(0px);
+      }
+
+      50% {
+        transform: translatey(-30px);
+      }
+
+      100% {
+        transform: translatey(0px);
+      }
+    }
+
+
+@-webkit-keyframes gede {
+  0%   {
+-webkit-transform: scale(.8)  rotate(0deg);
+}
+  50% {
+-webkit-transform: scale(1.5)  rotate(359deg);
+}
+  100%   {
+-webkit-transform: scale(.8)  rotate(0deg);
+}
+
+}
+
+@-webkit-keyframes wave {
+  50% {
+    -webkit-transform: translateY(-3px);
+  }
+}
+
+.wave {
+  animation: wave 0.5s infinite;
+  -webkit-animation: wave 0.5s infinite;
+}
+
+
+
+@keyframes fadeInUp {
+    from {
+        transform: translate3d(0,40px,0);
+         opacity: 0 ;
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1 ;
+    }
+}
+
+@-webkit-keyframes fadeInUp {
+    from {
+        transform: translate3d(0,40px,0);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes bounce {
+  0%, 20%, 53%, 80%, 100% {
+    -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+
+  40%, 43% {
+    -webkit-transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    -webkit-transform: translate3d(0, -10px, 0);
+  }
+
+  70% {
+    -webkit-transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    -webkit-transform: translate3d(0, -5px, 0);
+  }
+
+  90% {
+    -webkit-transform: translate3d(0, -1px, 0);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 53%, 80%, 100% {
+    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    transform: translate3d(0, 0, 0);
+  }
+
+  40%, 43% {
+    transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    transform: translate3d(0, -10px, 0);
+  }
+
+  70% {
+    transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    transform: translate3d(0, -5px, 0);
+  }
+
+  90% {
+    transform: translate3d(0, -1px, 0);
+  }
+}
+
+.bounce {
+  animation: bounce 1.5s infinite;
+  -webkit-animation: bounce 1.5s infinite;
+}

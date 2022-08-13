@@ -1,0 +1,183 @@
+
+/*
+Made by Lucid Astracelestia
+https://twitter.com/LAstracelestia
+https://www.youtube.com/c/LucidAstracelestiavlive
+
+For Asakura Succubus
+https://www.youtube.com/c/AsakuraSuccubusCh
+
+!!The content in this file is shouldn't be shared to any other party!!
+
+*/
+
+.stream-content {
+    background-color: transparent;
+    background-image: url('https://imgur.com/F1MWXjK.gif');
+    background-size: 1080px 722px;
+    text-align: center;
+    width: 1080px;
+    height: 722px;
+    border: transparent;
+    animation: scaleup 0.25s linear;
+    animation-iteration-count: 1;
+}
+
+.supporter-avatar {
+  position: relative ;
+  animation: scaleall 0.5s ease-in-out;
+}
+
+.supporter-avatar>img {
+  border-radius: 40px;
+  left: 1000px !important ;
+  margin-top: 65px;
+  border-left: 2px solid rgba(255, 255, 255, 0);
+  border-bottom: 2px solid rgba(255, 255, 255, 0);
+  height: 100px;
+  width: 100px;
+  animation: float1 4s infinite;
+}
+
+
+.letters-1 {
+position: relative;
+   transform: translate(-50%,-50%);
+   top: 50%;
+   left: 50%;
+   letter-spacing: 5px;
+   font-size: 3em;
+   font-weight: bold;
+   background-image:radial-gradient(circle farthest-corner at center center, #CF2F17 0%, #CF9D15 97%);
+   color:transparent;
+   -webkit-background-clip:text;
+
+animation: float1 2s infinite;
+}
+
+.letters-1:after{
+background: none;
+    content: attr(data-heading);
+    left: 0;
+	top: 0;
+    z-index: -1;
+    position: absolute;
+    text-shadow:
+		-1px 0 1px #c6bb9f,
+		0 1px 1px #c6bb9f,
+		5px 5px 10px rgba(0, 0, 0, 0.4),
+		-5px -5px 10px rgba(0, 0, 0, 0.4);
+
+}
+.message {
+    font-size: 1em;
+    padding: 65px;
+    color: rgba(0, 0, 0, 1);
+    padding: 15px 30px 0 60px;
+}
+
+.support-message {
+    font-size: 3em;
+    font-weight: 100;
+    color: white;
+    padding: 50px 20px 10px 20px;
+    line-height: 1em;
+    position: relative;
+    display: inline-block;
+    color: rgba(0, 0, 0, 1);
+    position: relative;
+}
+
+.letters-2 {
+  text-align:center;
+  margin-top: -30px;
+  font-size: 3em !important;
+  color: rgba(0, 0, 0, 1);
+  animation: fadeUp 1s ease-in-out;
+
+}
+
+
+.bubbles {
+visibility: hidden;
+      position: absolute;
+      animation: scaleall 1s ease-in-out;
+    }
+
+    .bubbles>div {
+visibility: hidden;
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      background: rgba(255, 255, 255, 1);
+      border-radius: 9999px;
+      border-left: 3px solid rgba(255, 255, 255, 1);
+      border-bottom: 3px solid rgba(255, 255, 255, 1);
+      animation: float 4s infinite;
+    }
+
+    .bubbles-top {
+      left: 30px;
+visibility: hidden;
+      bottom: 8px;
+    }
+
+    .bubbles.bubbles-top>.bubble-2 {
+      width: 10px;
+      height: 10px;
+      margin-left: 30px;
+      margin-top: 16px;
+      border-width: 2px;
+visibility: hidden;
+    }
+
+    .bubbles.bubbles-top>.bubble-3 {
+     visibility: hidden;
+      width: 5px;
+      height: 5px;
+      margin-left: 20px;
+      margin-top: 31px;
+      border-width: 1px;
+    }
+
+    .bubbles>div.bubble-2 {
+      animation-delay: .25s;
+visibility: hidden;
+    }
+
+    .bubbles>div.bubble-3 {
+      animation-delay: .5s;
+visibility: hidden;
+    }
+
+
+img.unit-icon {
+    width: 300px;
+    height: 300px;
+    background: transparent;
+    content: url('https://imgur.com/r9riddm.png');
+   border: transparent !important;
+    border-left: 3px solid rgba(255, 255, 255,0);
+    border-bottom: 3px solid rgba(255, 255, 255, 0);
+    border-radius: 6px;
+    left: 140px;
+    top: 360px;
+    padding: 7px;
+    z-index: 1;
+    animation: waviy 1s infinite !important;
+  animation-delay: calc(.1s * var(--i)) !important;
+  position: relative;
+}
+
+.quantity-label {
+visibility: hidden;
+}
+
+@keyframes waviy {
+  0%,40%,100% {
+    transform: translateY(0)
+  }
+  20% {
+    transform: translateY(-20px)
+  }
+}

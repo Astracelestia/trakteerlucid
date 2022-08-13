@@ -1,6 +1,6 @@
 .stream-content {
     background-color: transparent;
-    background-image: url('https://imgur.com/pj6yklD.gif');
+    background-image: url('https://imgur.com/P2rP31B.gif');
     background-size: 1000px 1000px;
     border:transparent;
     text-align: center;
@@ -31,8 +31,9 @@
 .letters-1 {
  color: rgb(0, 29, 110) !important;
   margin-top: -20px;
-  margin-left: 25px;
-  font-size: 5em !important;
+  text-align:center !important;
+  font-size: 3em !important;
+  font-weight: bolda !important;
    line-width: 0.3em !important ;
 -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: rgb(255, 255, 255);
@@ -60,7 +61,7 @@ animation: float1 2s infinite;
 }
 
 .letters-2 {
-  margin-left: 330px !important ;
+  text-align:center;
   margin-top: -5px;
   font-size: 3em !important;
   color: rgb(255, 255, 255);
