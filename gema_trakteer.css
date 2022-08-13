@@ -78,19 +78,19 @@ margin-left: 200px;
 
 }
 
-/* .quantity-label {
+ .quantity-label {
 visibility: hidden;
 }
-*/
+
 
 .bubbles {
       visibility:hidden;
 
 
     }
-.supporter-avatar {
-      visibility: hidden;
-}
+/* .supporter-avatar {
+
+} */
 
     img.unit-icon {
     width: 502px;
