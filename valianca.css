@@ -1,0 +1,133 @@
+        .container {
+            margin-top: 90px;
+            display: none;
+            transition: opacity 0.5s;
+            font-family: var(--fontFamily);
+        }
+
+        img.unit-icon {visibility: hidden; }
+
+        .stream-content {
+
+            background-image: url(https://imgur.com/gpKI0dh.gif);
+            background-color: transparent;
+            background-size: 1507px 846px;
+            width: 1507px;
+            height: 846px;
+            border-radius: 0px;
+            border-left: 0px solid rgba(0, 0, 0, 0);
+            border-bottom: 0px solid rgba(0, 0, 0, 0);
+            font-family: var(--fontFamily);
+            animation: fade-in-move-down 4s linear !important;
+            animation-iteration-count: 1;
+            position: relative;
+            filter: drop-shadow(0 0 0.5rem #d1ecfc);
+}
+
+        .image.basic {
+            position: absolute;
+            right: -10px;
+            top: -10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* padding: 5px 10px 5px 5px; */
+            animation: scaleall 1s ease-in-out;
+        }
+
+        .quantity-label {
+            position: absolute;
+            left: -70px;
+            top: 60px;
+            background: rgba(0, 0, 0, 0);
+            color: rgba(255, 255, 255, 1);
+            padding: 7px 10px 7px 15px;
+            font-size: 1.5em;
+            /* border-radius: 5px; */
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            font-weight: 700;
+            white-space: nowrap;
+            animation: float 5s infinite;
+        }
+        .message {
+            font-size: 2em;
+            padding: 20px;
+            color: rgba(255, 255, 255, 1);
+            padding:;
+        }
+
+        .support-message {
+            left: 10px;
+            top: 25px;
+            font-size: 2em;
+            font-weight: 100;
+            color: rgba(255, 255, 255, 1);
+            padding: 0px 130px 115px 30px;
+            line-height: 1.25em;
+            display: absolute;
+            align-items: center !important;
+            word-break: break-word;
+            animation: fadeUp 0.75s ease-in-out;
+            text-shadow: 0 0 30px rgba(134,160,176,255);
+        }
+
+        .support-message>img {
+            height: 40px;
+            margin-left: 8px;
+            margin-top: -10px;
+        }
+
+        .supporter-avatar {
+            position: absolute;
+            animation: scaleall 0.5s ease-in-out;
+        }
+
+        .supporter-avatar > img {
+            border-radius: 9999px;
+            margin: 10px;
+            margin-top: -50px;
+            margin-left: 350px;
+            width: 115.65px;
+            height: 115.65px;
+            border-left: 2px solid rgba(0, 0, 0, 0);
+            border-bottom: 2px solid rgba(0, 0, 0, 0);
+            filter: drop-shadow(0 0 15px #d1ecfc);
+        }
+
+        .letters-1 {
+    
+            padding-left: 200px !important;
+            margin-top: 10px;
+            font-color: white;
+            text-shadow: 0 0 30px rgba(134,160,176,255);
+        }
+         .letters-2 {
+    
+            visibility: hidden;
+        }
+
+        .letters-1,
+        .letters-2 {
+            animation: fadeUp 0.5s ease-in-out;
+        }
+
+        .bubbles {
+            position: absolute;
+            animation: scaleall 1s ease-in-out;
+        }
+
+        .bubbles > div {
+    position: absolute;
+    background-color: transparent;
+    content: url(https://imgur.com/SVbpttP.gif);
+    width: 1526px;
+    height: 761px;
+    left: -331px;
+    top: -539px;
+    background: rgba(21, 19, 33, 0);
+    border-radius: 0px;
+    border-left: 0px solid rgba(0, 0, 0, 0);
+    border-bottom: 0px solid rgba(0, 0, 0, 0);
+    animation: fade-in-move-down-sayap 15s ease-in-out !important;
+    filter: drop-shadow(0 0 15px #d1ecfc);
